@@ -9,9 +9,10 @@ class NPCManager: MonoBehaviour {
     public GameObject player;
     public float NPCMoveChance = 0.5f;
     public List<NPC> NPCs = new List<NPC>();
-    public Vector3 spawnPosition = Vector3.zero;
+    public Vector3 spawnPosition;
 
     public void Start(){
+        spawnPosition = transform.position;
         Music.Instance.beatDetector.OnBeat += OnBeatDetected;
         SpawnNPCs();
         SpawnPlayer();

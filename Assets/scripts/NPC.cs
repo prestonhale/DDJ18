@@ -82,19 +82,16 @@ public class NPC: MonoBehaviour
     }
 
     public void WasTransmittedTo(){
-        Debug.Log("Transmit Received");
         material.color = Color.cyan;
     }
 
     void Transmit(){
         var layermask = 1 << 8;
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, transmitRadius, layermask);
-        Debug.Log(hitColliders.Length);
         for (int i=0; i < hitColliders.Length; i++){
             var NPC = hitColliders[i].transform.parent.GetComponent<NPC>();
             if (NPC){
                 if (Random.value <= transmitSuccessChance){
-                    Debug.Log("Success");
                     NPC.WasTransmittedTo();
                 }
             }

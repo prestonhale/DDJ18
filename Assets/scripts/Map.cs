@@ -4,11 +4,18 @@ using UnityEngine;
 
 
 public class Map: MonoBehaviour {
-    public int minX = -40;
-    public int maxX = 40;
+    public float minX;
+    public float maxX;
 
-    public int minZ = -19;
-    public int maxZ = 19;
+    public float minZ;
+    public float maxZ;
+
+    public void Awake(){
+        minX = transform.GetChild(0).transform.position.x;
+        maxX = transform.GetChild(1).transform.position.x;
+        minZ = transform.GetChild(2).transform.position.z;
+        maxZ = transform.GetChild(3).transform.position.z;
+    }
 
     public bool InBounds(Vector3 checkPos){
         if (checkPos.x > maxX || checkPos.x < minX || checkPos.z > maxZ || checkPos.z < minZ){

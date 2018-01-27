@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class PlayerTwoBehavior : MonoBehaviour
 {
+  public float sensitivity;
+  public float minX;
+  public float maxX;
 
-  private int minX = -40;
-  private int maxX = 40;
-
-  private int minZ = -19;
-
-  private int maxZ = 19;
+  public float minZ;
+  public float maxZ;
 
   private bool touchingPlayer = false;
   private bool touchingComputer = false;
@@ -22,12 +21,13 @@ public class PlayerTwoBehavior : MonoBehaviour
     maxZ = Game.Instance.map.maxZ;
     minZ = Game.Instance.map.minZ;
   }
+
   Vector3 GetMovement()
   {
     Vector3 pos = transform.position;
 
-    float moveHorizontal = Input.GetAxis("Horizontal");
-    float moveVertical = Input.GetAxis("Vertical");
+    float moveHorizontal = Input.GetAxis("Horizontal") * sensitivity;
+    float moveVertical = Input.GetAxis("Vertical") * sensitivity;
 
     pos.x = Mathf.Clamp(transform.position.x + moveHorizontal, minX, maxX);
     pos.z = Mathf.Clamp(transform.position.z + moveVertical, minZ, maxZ);
