@@ -2,6 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public enum Direction
+{
+    N,
+    NE,
+    E,
+    SE,
+    S,
+    SW,
+    W,
+    NW
+}
+
+
+public static class Directions
+{
+    private static Vector3[] vectors = {
+        new Vector3 (0, 0, 1),
+        new Vector3 (1, 0, 1),
+        new Vector3 (1, 0, 0),
+        new Vector3 (1, 0, -1),
+        new Vector3 (0, 0, -1),
+        new Vector3 (-1, 0, -1),
+        new Vector3 (-1, 0, 0),
+        new Vector3 (-1, 0, 1)
+    };
+
+    public static Vector3 ToVector3(this Direction direction)
+    {
+        return vectors[(int)direction];
+    }
+}
+
 public class Game : MonoBehaviour
 {
 

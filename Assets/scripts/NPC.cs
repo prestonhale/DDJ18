@@ -3,55 +3,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public enum Direction
-{
-    N,
-    NE,
-    E,
-    SE,
-    S,
-    SW,
-    W,
-    NW
-}
-
-
-public static class Directions
-{
-    private static Vector3[] vectors = {
-        new Vector3 (0, 0, 1),
-        new Vector3 (1, 0, 1),
-        new Vector3 (1, 0, 0),
-        new Vector3 (1, 0, -1),
-        new Vector3 (0, 0, -1),
-        new Vector3 (-1, 0, -1),
-        new Vector3 (-1, 0, 0),
-        new Vector3 (-1, 0, 1)
-    };
-
-    public static Vector3 ToVector3(this Direction direction)
-    {
-        return vectors[(int)direction];
-    }
-}
-
 public class NPC: MonoBehaviour
 {
     public bool colored = true;
     public float movementScale = 1;
     public bool isPlayer;
+    public float transmitRadius;
 
 
     public bool dancedThisBeat = false;
     public float nextDanceTime;
+
+    public Material material;
+
+    public static Color[] colors = new Color[] { Color.red, Color.green, Color.yellow };
 
     // If we recalc their next dance time every dance, they appear drunk
     // If we don't recalc, they're consistent but still terrible
 
     // Use this for initialization
     void Start()
-    {
+    {   
+        material = transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material;
+        if (isPlayer) {
+            material.color = Color.blue;
+        } else {
+            material.color = GetRandColor();
+        }
     }
 
     void Update(){
@@ -60,6 +38,9 @@ public class NPC: MonoBehaviour
                 Dance();
             }
         }
+        if (isPlayer && Input.GetKey(KeyCode.P)){
+            Transmit();
+        }
     }
 
     void SetRandColor(){
@@ -67,7 +48,8 @@ public class NPC: MonoBehaviour
     }
 
     public Color GetRandColor(){
-        return Color.red;
+        var color = colors[Random.Range(0, colors.Length)];
+        return color;
     }
 
     public void Dance(){
@@ -96,5 +78,20 @@ public class NPC: MonoBehaviour
         var values = Enum.GetValues(typeof(Direction));
         var randomDirection = (Direction)Random.Range(0, values.Length);
         return randomDirection;
+    }
+
+    public void WasTransmittedTo(){
+        Debug.Log("Received Transmission");
+    }
+
+    void Transmit(){
+        var layermask = 1 << 8;
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, transmitRadius, layermask);
+        for (int i=0; i < hitColliders.Length; i++){
+            var NPC = hitColliders[i].gameObject.GetComponent<NPC>();
+            if (NPC){
+                NPC.WasTransmittedTo();
+            }
+        }
     }
 }

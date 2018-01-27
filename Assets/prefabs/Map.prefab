@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642c474057e82457dabebf9cad27511a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minX: -40
-  maxX: 40
-  minZ: -19
-  maxZ: 19
+  minX: -5
+  maxX: 5
+  minZ: -5
+  maxZ: 5
