@@ -55,5 +55,6 @@ MonoBehaviour:
   npc: {fileID: 1284330090228086, guid: 4cb612f1779cf4c31818112a78710ae8, type: 2}
   spawnPlayer: 1
   player: {fileID: 1644037998831600, guid: d3204ac5111904d78a675242b04bcf02, type: 2}
+  NPCMoveChance: 0.5
   NPCs: []
   spawnPosition: {x: 0, y: 0, z: 0}

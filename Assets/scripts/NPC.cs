@@ -9,6 +9,7 @@ public class NPC: MonoBehaviour
     public float movementScale = 1;
     public bool isPlayer;
     public float transmitRadius;
+    public float transmitSuccessChance;
 
 
     public bool dancedThisBeat = false;
@@ -38,7 +39,7 @@ public class NPC: MonoBehaviour
                 Dance();
             }
         }
-        if (isPlayer && Input.GetKey(KeyCode.P)){
+        if (isPlayer && Input.GetKeyDown(KeyCode.P)){
             Transmit();
         }
     }
@@ -81,16 +82,21 @@ public class NPC: MonoBehaviour
     }
 
     public void WasTransmittedTo(){
-        Debug.Log("Received Transmission");
+        Debug.Log("Transmit Received");
+        material.color = Color.cyan;
     }
 
     void Transmit(){
         var layermask = 1 << 8;
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, transmitRadius, layermask);
+        Debug.Log(hitColliders.Length);
         for (int i=0; i < hitColliders.Length; i++){
-            var NPC = hitColliders[i].gameObject.GetComponent<NPC>();
+            var NPC = hitColliders[i].transform.parent.GetComponent<NPC>();
             if (NPC){
-                NPC.WasTransmittedTo();
+                if (Random.value <= transmitSuccessChance){
+                    Debug.Log("Success");
+                    NPC.WasTransmittedTo();
+                }
             }
         }
     }
