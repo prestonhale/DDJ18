@@ -8,6 +8,9 @@ public class Game : MonoBehaviour
   public int hunterFailures = 0;
   public int maxHunterFailures = 3;
 
+  public int dancerLocations = 0;
+  public int maxDancerLocations = 5;
+
   public static Game Instance;
 
   public Canvas canvas;
@@ -16,6 +19,16 @@ public class Game : MonoBehaviour
   private bool gameOver = false;
 
   public UnityEngine.UI.Text text;
+
+  public void AddDancerLocation()
+  {
+    dancerLocations++;
+
+    if (dancerLocations >= maxDancerLocations)
+    {
+      GameOver(0);
+    }
+  }
 
   public void AddHunterFailure()
   {
