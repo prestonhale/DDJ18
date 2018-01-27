@@ -75,7 +75,7 @@ public class Game : MonoBehaviour
     }
   }
 
-  private void GameOver(int winner)
+  public void GameOver(int winner)
   {
     string winnerName = winner == 0 ? "Dancer" : "Hunter";
 

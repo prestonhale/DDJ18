@@ -12,12 +12,11 @@ public class PlayerTwoBehavior : MonoBehaviour
 
   private int maxZ = 19;
 
-  private int failures = 0;
-
   private bool touchingPlayer = false;
   private bool touchingComputer = false;
 
-  public void Start() {
+  public void Start()
+  {
     maxX = Game.Instance.map.maxX;
     minX = Game.Instance.map.minX;
     maxZ = Game.Instance.map.maxZ;
@@ -40,12 +39,11 @@ public class PlayerTwoBehavior : MonoBehaviour
   {
     if (touchingPlayer)
     {
-      Debug.Log("You win!");
+      Game.Instance.GameOver(1);
     }
     else if (touchingComputer)
     {
       Game.Instance.AddHunterFailure();
-      Debug.Log("Oops you're wrong");
     }
   }
 
