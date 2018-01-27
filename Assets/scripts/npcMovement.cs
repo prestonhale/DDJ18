@@ -38,17 +38,15 @@ public static class Directions
 public class npcMovement : BeatListener
 {
     public bool colored = true;
-    public float shittyDancingCoefficient;
 
     public float movementScale = 1;
-    public float maxOffBeatTime = 0.5f;
-    public float offBeatBuffer = 0.1f;
-
-    public BeatObserver observer;
-    float timeSinceLastBeat = 0;
-    bool dancedThisBeat = false;
-    public float shittyTime;
     public bool isPlayer = false;
+    public float offBeatTime;
+    public BeatObserver observer;
+
+    float maxOffBeatTime = 0.32f;
+    public float timeSinceLastBeat = 0;
+    public bool dancedThisBeat = false;
 
     // If we recalc their next dance time every dance, they appear drunk
     // If we don't recalc, they're consistent but still terrible
@@ -58,38 +56,45 @@ public class npcMovement : BeatListener
     {
         observer.register(this);
         if (isPlayer){
-            shittyDancingCoefficient = 0;
+            offBeatTime = 0f;
         } else {
-            shittyDancingCoefficient = Random.value;
+            float shittyDancingCoefficient = Random.value;
+            offBeatTime = (maxOffBeatTime * shittyDancingCoefficient);
         }
-        shittyTime = (maxOffBeatTime * shittyDancingCoefficient) + offBeatBuffer;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         timeSinceLastBeat += Time.deltaTime;
-        if (timeSinceLastBeat >= shittyTime){
-            Dance();
-        }
+
+    }
+
+    void Update(){
+        // if (timeSinceLastBeat > offBeatTime){
+            if(!dancedThisBeat){
+                Debug.Log("Dance");
+                Dance();
+            }
+        // }
     }
 
     public override void OnBeat(){
-        Debug.Log("NPC BEAT");
-        dancedThisBeat = false;
+        Debug.Log("Beat");
         timeSinceLastBeat = 0;
+        dancedThisBeat = false;
+    }
+
+    void SetRandColor(){
+        
     }
 
     void Dance(){
-        Debug.Log("Dance");
-        if (dancedThisBeat){
-            return;
-        }
-        transform.Translate(GetRandVector());
         dancedThisBeat = true;
+        transform.Translate(GetRandVector());
     }
 
     Vector3 GetRandVector(){
+        Debug.Log("random vect");
         return GetRandDirection().ToVector3();
     }
 

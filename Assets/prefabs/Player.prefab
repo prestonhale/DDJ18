@@ -137,9 +137,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colored: 1
-  shittyDancingCoefficient: 0
   movementScale: 1
-  maxShittyTime: 1
+  maxOffBeatTime: 0.5
   observer: {fileID: 0}
-  shittyTime: 0
+  timeSinceLastBeat: 0
+  dancedThisBeat: 0
+  offBeatTime: 0
   isPlayer: 1
