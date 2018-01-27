@@ -72,7 +72,19 @@ public class NPC: MonoBehaviour
 
     public void Dance(){
         dancedThisBeat = true;
-        transform.Translate(GetRandVector());
+        var newPos = GetNextPosition();
+        for (int i=0; i<11; i++){
+            if (Game.Instance.map.InBounds(newPos)){
+                transform.position = newPos;
+                break;
+            }
+        }
+    }
+
+    Vector3 GetNextPosition(){
+        var possibleDirection = GetRandVector();
+        var possibleLocation = transform.position + possibleDirection;
+        return possibleLocation;
     }
 
     Vector3 GetRandVector(){

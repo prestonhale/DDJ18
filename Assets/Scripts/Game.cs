@@ -22,9 +22,6 @@ public class Game : MonoBehaviour
 
   public UnityEngine.UI.Text text;
 
-  public void Start() {
-  }
-
   public void AddDancerLocation()
   {
     dancerLocations++;
