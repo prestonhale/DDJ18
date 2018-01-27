@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PatricScript : MonoBehaviour
+public class PlayerTwoBehavior : MonoBehaviour
 {
 
   private int minX = -40;
