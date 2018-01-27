@@ -35,18 +35,15 @@ public static class Directions
     }
 }
 
-public class npcMovement : BeatListener
+public class NPC: MonoBehaviour
 {
     public bool colored = true;
-
     public float movementScale = 1;
-    public bool isPlayer = false;
-    public float offBeatTime;
-    public BeatObserver observer;
+    public bool isPlayer;
 
-    float maxOffBeatTime = 0.32f;
-    public float timeSinceLastBeat = 0;
+
     public bool dancedThisBeat = false;
+    public float nextDanceTime;
 
     // If we recalc their next dance time every dance, they appear drunk
     // If we don't recalc, they're consistent but still terrible
@@ -54,38 +51,17 @@ public class npcMovement : BeatListener
     // Use this for initialization
     void Start()
     {
-        observer.register(this);
-        if (isPlayer){
-            offBeatTime = 0f;
-        } else {
-            float shittyDancingCoefficient = Random.value;
-            offBeatTime = (maxOffBeatTime * shittyDancingCoefficient);
-        }
-    }
-
-    void FixedUpdate()
-    {
-        timeSinceLastBeat += Time.deltaTime;
-
     }
 
     void Update(){
-        // if (timeSinceLastBeat > offBeatTime){
+        if (Time.time > nextDanceTime){
             if(!dancedThisBeat){
-                Debug.Log("Dance");
                 Dance();
             }
-        // }
-    }
-
-    public override void OnBeat(){
-        Debug.Log("Beat");
-        timeSinceLastBeat = 0;
-        dancedThisBeat = false;
+        }
     }
 
     void SetRandColor(){
-        
     }
 
     void Dance(){
@@ -94,7 +70,6 @@ public class npcMovement : BeatListener
     }
 
     Vector3 GetRandVector(){
-        Debug.Log("random vect");
         return GetRandDirection().ToVector3();
     }
 
