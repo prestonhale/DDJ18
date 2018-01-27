@@ -53,5 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeSinceLastBeat: 0
   timeOfLastBeat: 0
+  beatLength: 0
   musicClip: {fileID: 8300000, guid: 7d1556ab718e8084aa75a694a8262630, type: 3}
   beatDetector: {fileID: 0}
+  nullOutputGroup: {fileID: 24300002, guid: 3a78f753f17982045b5077f8aa1e9bb3, type: 2}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Music : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Music : MonoBehaviour
     public float beatLength = 0f;
     public AudioClip musicClip;
     public SimpleBeatDetection beatDetector;
+    public AudioMixerGroup nullOutputGroup;
 
     Camera _camera;
     AudioSource _audioSource;
@@ -62,6 +64,7 @@ public class Music : MonoBehaviour
     public void Play()
     {
         _drumAudioSource.volume = 1;
+        _drumAudioSource.outputAudioMixerGroup = nullOutputGroup;
         _audioSource.volume = 1;
         _drumAudioSource.Play();
         _audioSource.Play();
