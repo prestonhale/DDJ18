@@ -12,6 +12,7 @@ public class Music : MonoBehaviour
 
     Camera _camera;
     AudioSource _audioSource;
+    AudioSource _drumAudioSource;
 
     public static Music Instance;
 
@@ -29,18 +30,18 @@ public class Music : MonoBehaviour
         _camera = Camera.main;
         if (_camera != null)
         {
-            _audioSource = _camera.GetComponent<AudioSource>();
+            AudioSource[] audioSources = _camera.GetComponents<AudioSource>();
+            _audioSource = audioSources[0];
+            _drumAudioSource = audioSources[1];
             beatDetector = _camera.GetComponent<SimpleBeatDetection>();
         }
         if (_audioSource != null)
         {
-            _audioSource.clip = musicClip;
             _audioSource.playOnAwake = false;
         }
         if (beatDetector != null)
         {
-            _audioSource.clip = musicClip;
-            beatDetector.audioSource = _audioSource;
+            beatDetector.audioSource = _drumAudioSource;
             beatDetector.bufferSize = 1024;
             beatDetector.OnBeat += OnBeatDetected;
         }
@@ -60,6 +61,9 @@ public class Music : MonoBehaviour
 
     public void Play()
     {
+        _drumAudioSource.volume = 1;
+        _audioSource.volume = 1;
+        _drumAudioSource.Play();
         _audioSource.Play();
     }
 }
