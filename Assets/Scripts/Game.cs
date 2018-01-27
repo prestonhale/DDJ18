@@ -5,20 +5,20 @@ using UnityEngine;
 [System.Serializable]
 public enum Direction
 {
-    N,
-    NE,
-    E,
-    SE,
-    S,
-    SW,
-    W,
-    NW
+  N,
+  NE,
+  E,
+  SE,
+  S,
+  SW,
+  W,
+  NW
 }
 
 
 public static class Directions
 {
-    private static Vector3[] vectors = {
+  private static Vector3[] vectors = {
         new Vector3 (0, 0, 1),
         new Vector3 (1, 0, 1),
         new Vector3 (1, 0, 0),
@@ -29,10 +29,10 @@ public static class Directions
         new Vector3 (-1, 0, 1)
     };
 
-    public static Vector3 ToVector3(this Direction direction)
-    {
-        return vectors[(int)direction];
-    }
+  public static Vector3 ToVector3(this Direction direction)
+  {
+    return vectors[(int)direction];
+  }
 }
 
 public class Game : MonoBehaviour
@@ -61,7 +61,7 @@ public class Game : MonoBehaviour
 
     if (dancerLocations >= maxDancerLocations)
     {
-      GameOver(0);
+      GameOver(1);
     }
   }
 
@@ -71,7 +71,7 @@ public class Game : MonoBehaviour
 
     if (hunterFailures >= maxHunterFailures)
     {
-      GameOver(1);
+      GameOver(0);
     }
   }
 
@@ -106,7 +106,7 @@ public class Game : MonoBehaviour
   {
     if (gameOver == true && Input.GetKeyDown("joystick 1 button 0"))
     {
-      UnityEngine.SceneManagement.SceneManager.LoadScene("patricScene");
+      UnityEngine.SceneManagement.SceneManager.LoadScene("Warehouse - Patric");
     }
   }
 }
