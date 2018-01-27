@@ -4,26 +4,56 @@ using UnityEngine;
 
 public class BeatVisualizer : MonoBehaviour
 {
-    Color currentColor;
+    public Light beatLight;
     Renderer cubeRenderer;
+
+    float lightFlashDuration = 0.1f;
+    float lightFlashTime = 0f;
+    float lightIntensity = 2f;
 
     void Start()
     {
-        Music.Instance.beatDetector.OnBeat += OnBeatDetected;
+        Music.Instance.beatDetector.OnBeat += CubeResponse;
+        if (beatLight != null)
+        {
+            Music.Instance.beatDetector.OnBeat += LightResponse;
+        }
         Music.Instance.Play();
-        currentColor = Color.black;
         cubeRenderer = GetComponent<MeshRenderer>();
     }
 
-    void Update() {
+    void Update()
+    {
         // cubeRenderer.material.color = Color.black;
     }
 
-    void OnBeatDetected() {
+    void LightResponse()
+    {
+        StartCoroutine(FlashLight());
+    }
+
+    IEnumerator FlashLight()
+    {
+        float elapsedTime = 0f;
+        float duration = 0.1f;
+        while (elapsedTime < duration) {
+            // beatLight.intensity = Mathf.Lerp(2, 3, elapsedTime / duration);
+            beatLight.intensity = 2f + Mathf.PingPong(elapsedTime * 20, 1);
+            beatLight.range = 9.72f + Mathf.PingPong(elapsedTime * 20, 2f);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        beatLight.intensity = 2f;
+        beatLight.range = 9.72f;
+    }
+
+    void CubeResponse()
+    {
         StartCoroutine(FlashWhite());
     }
 
-    IEnumerator FlashWhite() {
+    IEnumerator FlashWhite()
+    {
         cubeRenderer.material.color = Color.white;
         yield return new WaitForSeconds(0.1f);
         cubeRenderer.material.color = Color.black;

@@ -9584,7 +9584,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4300812666279010, guid: 217c789f09b48cc42ab119633eea0df8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -6.37
+      value: -12.96
       objectReference: {fileID: 0}
     - target: {fileID: 4300812666279010, guid: 217c789f09b48cc42ab119633eea0df8, type: 2}
       propertyPath: m_LocalPosition.y
@@ -9619,6 +9619,11 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114321725178466326, guid: 217c789f09b48cc42ab119633eea0df8,
+        type: 2}
+      propertyPath: beatLight
+      value: 
+      objectReference: {fileID: 2153}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 217c789f09b48cc42ab119633eea0df8, type: 2}
   m_IsPrefabParent: 0
