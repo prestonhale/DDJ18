@@ -12,6 +12,8 @@ public class PlayerTwoBehavior : MonoBehaviour
 
   private int maxZ = 19;
 
+  private int failures = 0;
+
   private bool touchingPlayer = false;
   private bool touchingComputer = false;
   Vector3 GetMovement()
@@ -35,9 +37,11 @@ public class PlayerTwoBehavior : MonoBehaviour
     }
     else if (touchingComputer)
     {
+      Game.Instance.AddHunterFailure();
       Debug.Log("Oops you're wrong");
     }
   }
+
 
   void OnTriggerEnter(Collider other)
   {

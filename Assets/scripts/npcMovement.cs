@@ -6,19 +6,19 @@ using UnityEngine;
 [System.Serializable]
 public enum Direction
 {
-    N,
-    NE,
-    E,
-    SE,
-    S,
-    SW,
-    W,
-    NW
+  N,
+  NE,
+  E,
+  SE,
+  S,
+  SW,
+  W,
+  NW
 }
 
 public static class Directions
 {
-    private static Vector3[] vectors = {
+  private static Vector3[] vectors = {
         new Vector3 (0, 0, 1),
         new Vector3 (1, 0, 1),
         new Vector3 (1, 0, 0),
@@ -29,79 +29,88 @@ public static class Directions
         new Vector3 (-1, 0, 1)
     };
 
-    public static Vector3 ToVector3(this Direction direction)
-    {
-        return vectors[(int)direction];
-    }
+  public static Vector3 ToVector3(this Direction direction)
+  {
+    return vectors[(int)direction];
+  }
 }
 
 public class npcMovement : BeatListener
 {
-    public bool colored = true;
+  public bool colored = true;
 
-    public float movementScale = 1;
-    public bool isPlayer = false;
-    public float offBeatTime;
-    public BeatObserver observer;
+  public float movementScale = 1;
+  public bool isPlayer = false;
+  public float offBeatTime;
+  public BeatObserver observer;
 
-    float maxOffBeatTime = 0.32f;
-    public float timeSinceLastBeat = 0;
-    public bool dancedThisBeat = false;
+  float maxOffBeatTime = 0.32f;
+  public float timeSinceLastBeat = 0;
+  public bool dancedThisBeat = false;
 
-    // If we recalc their next dance time every dance, they appear drunk
-    // If we don't recalc, they're consistent but still terrible
+  // If we recalc their next dance time every dance, they appear drunk
+  // If we don't recalc, they're consistent but still terrible
 
-    // Use this for initialization
-    void Start()
+  // Use this for initialization
+  void Start()
+  {
+    observer.register(this);
+    if (isPlayer)
     {
-        observer.register(this);
-        if (isPlayer){
-            offBeatTime = 0f;
-        } else {
-            float shittyDancingCoefficient = Random.value;
-            offBeatTime = (maxOffBeatTime * shittyDancingCoefficient);
-        }
+      offBeatTime = 0f;
     }
-
-    void FixedUpdate()
+    else
     {
-        timeSinceLastBeat += Time.deltaTime;
-
+      float shittyDancingCoefficient = Random.value;
+      offBeatTime = (maxOffBeatTime * shittyDancingCoefficient);
     }
+  }
 
-    void Update(){
-        // if (timeSinceLastBeat > offBeatTime){
-            if(!dancedThisBeat){
-                Debug.Log("Dance");
-                Dance();
-            }
-        // }
-    }
+  void FixedUpdate()
+  {
+    timeSinceLastBeat += Time.deltaTime;
 
-    public override void OnBeat(){
-        Debug.Log("Beat");
-        timeSinceLastBeat = 0;
-        dancedThisBeat = false;
-    }
+  }
 
-    void SetRandColor(){
-        
-    }
-
-    void Dance(){
-        dancedThisBeat = true;
-        transform.Translate(GetRandVector());
-    }
-
-    Vector3 GetRandVector(){
-        Debug.Log("random vect");
-        return GetRandDirection().ToVector3();
-    }
-
-    Direction GetRandDirection()
+  void Update()
+  {
+    // if (timeSinceLastBeat > offBeatTime){
+    if (!dancedThisBeat)
     {
-        var values = Enum.GetValues(typeof(Direction));
-        var randomDirection = (Direction)Random.Range(0, values.Length);
-        return randomDirection;
+      Debug.Log("Dance");
+      Dance();
     }
+    // }
+  }
+
+  public override void OnBeat()
+  {
+    // Debug.Log("Beat");
+    timeSinceLastBeat = 0;
+    dancedThisBeat = false;
+  }
+
+  void SetRandColor()
+  {
+
+  }
+
+  void Dance()
+  {
+    dancedThisBeat = true;
+    transform.Translate(GetRandVector());
+  }
+
+  Vector3 GetRandVector()
+  {
+    Debug.Log("random vect");
+    return GetRandDirection().ToVector3();
+  }
+
+  Direction GetRandDirection()
+  {
+    var values = Enum.GetValues(typeof(Direction));
+    var randomDirection = (Direction)Random.Range(0, values.Length);
+    return randomDirection;
+  }
 }
