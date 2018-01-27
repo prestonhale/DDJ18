@@ -16,12 +16,10 @@ public class BeatVisualizer : MonoBehaviour
     }
 
     void Update() {
-        currentColor = Color.Lerp(currentColor, Color.black, .01f);
-        cubeRenderer.material.color = currentColor;
+        cubeRenderer.material.color = Color.black;
     }
 
     void OnBeatDetected() {
-        Debug.Log("Color");
-        currentColor = Color.red;
+        cubeRenderer.material.color = Color.red;
     }
 }

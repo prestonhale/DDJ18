@@ -15,10 +15,15 @@ public class Game : MonoBehaviour
 
   public Canvas canvas;
 
+  public Map map;
+
   private CanvasGroup canvasGroup;
   private bool gameOver = false;
 
   public UnityEngine.UI.Text text;
+
+  public void Start() {
+  }
 
   public void AddDancerLocation()
   {

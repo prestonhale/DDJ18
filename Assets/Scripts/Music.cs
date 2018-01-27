@@ -54,6 +54,7 @@ public class Music : MonoBehaviour
 
     void OnBeatDetected()
     {
+        beatLength = timeSinceLastBeat;
         timeOfLastBeat = Time.time;
     }
 

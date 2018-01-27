@@ -16,6 +16,13 @@ public class PlayerTwoBehavior : MonoBehaviour
 
   private bool touchingPlayer = false;
   private bool touchingComputer = false;
+
+  public void Start() {
+    maxX = Game.Instance.map.maxX;
+    minX = Game.Instance.map.minX;
+    maxZ = Game.Instance.map.maxZ;
+    minZ = Game.Instance.map.minZ;
+  }
   Vector3 GetMovement()
   {
     Vector3 pos = transform.position;

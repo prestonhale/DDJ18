@@ -16,6 +16,7 @@ public enum Direction
     NW
 }
 
+
 public static class Directions
 {
     private static Vector3[] vectors = {
@@ -62,9 +63,14 @@ public class NPC: MonoBehaviour
     }
 
     void SetRandColor(){
+        transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = GetRandColor();
     }
 
-    void Dance(){
+    public Color GetRandColor(){
+        return Color.red;
+    }
+
+    public void Dance(){
         dancedThisBeat = true;
         transform.Translate(GetRandVector());
     }
