@@ -35,16 +35,20 @@ public static class Directions
     }
 }
 
-public class npcMovement : MonoBehaviour
+public class npcMovement : BeatListener
 {
     public bool colored = true;
     public float shittyDancingCoefficient;
+
     public float movementScale = 1;
-    public float beatTime = 2; // 30 bpm
-    public float maxShittyTime = 1f;
-    float timeSinceLastBeat;
+    public float maxOffBeatTime = 0.5f;
+    public float offBeatBuffer = 0.1f;
+
+    public BeatObserver observer;
+    float timeSinceLastBeat = 0;
     bool dancedThisBeat = false;
     public float shittyTime;
+    public bool isPlayer = false;
 
     // If we recalc their next dance time every dance, they appear drunk
     // If we don't recalc, they're consistent but still terrible
@@ -52,30 +56,32 @@ public class npcMovement : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        shittyDancingCoefficient = Random.value;
-        shittyTime = (maxShittyTime * shittyDancingCoefficient);
+        observer.register(this);
+        if (isPlayer){
+            shittyDancingCoefficient = 0;
+        } else {
+            shittyDancingCoefficient = Random.value;
+        }
+        shittyTime = (maxOffBeatTime * shittyDancingCoefficient) + offBeatBuffer;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         timeSinceLastBeat += Time.deltaTime;
-        if (timeSinceLastBeat >= (beatTime - shittyTime)){
-            Debug.Log("Dance");
+        if (timeSinceLastBeat >= shittyTime){
             Dance();
-        }
-        if (timeSinceLastBeat > beatTime){
-            Debug.Log("Beat");
-            Beat();
         }
     }
 
-    void Beat(){
+    public override void OnBeat(){
+        Debug.Log("NPC BEAT");
         dancedThisBeat = false;
         timeSinceLastBeat = 0;
     }
 
     void Dance(){
+        Debug.Log("Dance");
         if (dancedThisBeat){
             return;
         }
