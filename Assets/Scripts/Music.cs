@@ -6,6 +6,7 @@ public class Music : MonoBehaviour
 {
     public float timeSinceLastBeat = 0f;
     public float timeOfLastBeat = 0f;
+    public float beatLength = 0f;
     public AudioClip musicClip;
     public SimpleBeatDetection beatDetector;
 

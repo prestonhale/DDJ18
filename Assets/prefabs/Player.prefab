@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4312682882831868}
-  - component: {fileID: 114359210364524234}
+  - component: {fileID: 114604800926641596}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -125,7 +125,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114359210364524234
+--- !u!114 &114604800926641596
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -133,14 +133,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1644037998831600}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e29caba4c15f243f985964120d7eaa69, type: 3}
+  m_Script: {fileID: 11500000, guid: e195b406e372f4ca08a4318ae5a69bb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   colored: 1
   movementScale: 1
-  maxOffBeatTime: 0.5
-  observer: {fileID: 0}
-  timeSinceLastBeat: 0
-  dancedThisBeat: 0
-  offBeatTime: 0
   isPlayer: 1
+  dancedThisBeat: 0
+  nextDanceTime: 0

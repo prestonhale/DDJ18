@@ -7,7 +7,6 @@ public class BeatObserver : MonoBehaviour
 {
     public AudioClip clip;
     public Transform cube;
-    public List<BeatListener> listeners = new List<BeatListener>();
     public SimpleBeatDetection beatDetector;
     void Start()
     {
@@ -19,17 +18,9 @@ public class BeatObserver : MonoBehaviour
 
     }
 
-    public void register(BeatListener listener){
-        listeners.Add(listener);
-        Debug.Log("Registered");
-    }
-
     void OnBeatDetected()
     {
         StartCoroutine(FlashCube());
-        for (int i = 0; i < listeners.Count; i++) {
-            listeners[i].OnBeat();
-        }
     }
 
     void OnSpectrum()

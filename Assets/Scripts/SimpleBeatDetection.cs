@@ -10,6 +10,7 @@ public class SimpleBeatDetection : MonoBehaviour
 
     public delegate void OnBeatHandler();
     public event OnBeatHandler OnBeat;
+    public float lastBeat;
 
     // These variables are meant to get the left and right channels of the music
     private float[] samples0Channel;
@@ -65,8 +66,10 @@ public class SimpleBeatDetection : MonoBehaviour
         if (instantEnergy > constantC * localAverageEnergy)
         {
             // Beat!
-            if (OnBeat != null)
+            if (OnBeat != null && (Time.time - lastBeat > 0.2f)){
+                lastBeat = Time.time;
                 OnBeat();
+            }
         }
 
 

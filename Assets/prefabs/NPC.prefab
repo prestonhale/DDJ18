@@ -19,9 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4315837646788384}
-  - component: {fileID: 114098231162156426}
+  - component: {fileID: 114566512175091652}
   m_Layer: 0
-  m_Name: RandomNPC
+  m_Name: NPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,7 +125,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114098231162156426
+--- !u!114 &114566512175091652
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -133,14 +133,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1284330090228086}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e29caba4c15f243f985964120d7eaa69, type: 3}
+  m_Script: {fileID: 11500000, guid: e195b406e372f4ca08a4318ae5a69bb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   colored: 1
-  shittyDancingCoefficient: 0
   movementScale: 1
-  maxOffBeatTime: 0.5
-  offBeatBuffer: 0.1
-  observer: {fileID: 0}
-  shittyTime: 0
-  isPlayer: 1
+  isPlayer: 0
+  dancedThisBeat: 0
+  nextDanceTime: 0
