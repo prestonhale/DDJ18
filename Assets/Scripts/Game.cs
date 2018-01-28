@@ -98,18 +98,17 @@ public class Game : MonoBehaviour
 
   public void GameOver(int winner)
   {
-    string winnerName = winner == 0 ? "Dancer" : "Hunter";
-    Debug.Log(winnerName);
-    // Font font = winner == 0 ? dancerFont : hunterFont;
-    // var color = winner == 0 ? new Color(0.0f / 255.0f, 78.0f / 255.0f, 206.0f / 255.0f) : new Color(236.0f / 255f, 7.0f / 255f, 7.0f / 255f);
+    string winnerName = winner == 1 ? "Dancer" : "Hunter";
+    Font font = winner == 1 ? dancerFont : hunterFont;
+    var color = winner == 1 ? new Color(0.0f / 255.0f, 78.0f / 255.0f, 206.0f / 255.0f) : new Color(236.0f / 255f, 7.0f / 255f, 7.0f / 255f);
 
-    // winnerText.font = font;
-    // winnerText.color = color;
-    // playAgainText.font = font;
-    // winnerText.text = "The " + winnerName + " Won!";
-    // playAgainText.text = "Press Square to Play Again.";
-    // StartCoroutine(FadeTo(0.0f, 1f));
-    // gameOver = true;
+    winnerText.font = font;
+    winnerText.color = color;
+    playAgainText.font = font;
+    winnerText.text = "The " + winnerName + " Won!";
+    playAgainText.text = "Press Spacebar to Restart";
+    StartCoroutine(FadeTo(0.0f, 1f));
+    gameOver = true;
   }
 
 
@@ -136,9 +135,9 @@ public class Game : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    if (gameOver == true && Input.GetKeyDown("joystick 1 button 0"))
+    if (gameOver == true && Input.GetKeyDown("space"))
     {
-      UnityEngine.SceneManagement.SceneManager.LoadScene("Warehouse - Patric");
+      UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
     }
   }
 

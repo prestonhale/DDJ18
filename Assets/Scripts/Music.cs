@@ -15,6 +15,7 @@ public class Music : MonoBehaviour
     Camera _camera;
     AudioSource _audioSource;
     AudioSource _drumAudioSource;
+    AudioSource _sfxAudioSource;
 
     public static Music Instance;
 
@@ -35,6 +36,7 @@ public class Music : MonoBehaviour
             AudioSource[] audioSources = _camera.GetComponents<AudioSource>();
             _audioSource = audioSources[0];
             _drumAudioSource = audioSources[1];
+            _sfxAudioSource = audioSources[2];
             beatDetector = _camera.GetComponent<SimpleBeatDetection>();
         }
         if (_audioSource != null)
@@ -69,5 +71,12 @@ public class Music : MonoBehaviour
         _audioSource.volume = 1;
         _drumAudioSource.Play();
         _audioSource.Play();
+    }
+
+    public void PlaySFX(AudioClip clip) {
+        _sfxAudioSource.clip = clip;
+        _sfxAudioSource.volume = 1;
+        _sfxAudioSource.loop = false;
+        _sfxAudioSource.Play();
     }
 }
