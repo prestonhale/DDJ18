@@ -17,6 +17,7 @@ public class Menu : MonoBehaviour
         StartCoroutine("BlinkPrompt");
         introCanvas.gameObject.SetActive(true);
         instructionsCanvas.gameObject.SetActive(false);
+        promptText.gameObject.SetActive(true);
     }
 
     void Update()
@@ -41,7 +42,7 @@ public class Menu : MonoBehaviour
     IEnumerator BlinkPrompt()
     {
         bool showing = false;
-        promptText.enabled = false;
+        promptText.gameObject.SetActive(false);
 
         while (true)
         {

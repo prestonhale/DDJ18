@@ -115,9 +115,9 @@ MonoBehaviour:
   m_Text: 'DANCER:
 
 
-    Move to the beat and transmiit your groove (color) to the other dancers to win.
+    Move to the beat and transmiit your groove to the other dancers to win
 
-    Use the analoog stick to move and hide from the hunter.'
+    Use the analoog stick to move and hide from the hunter'
 --- !u!114 &114048458048440096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -203,6 +203,7 @@ MonoBehaviour:
 
 
     Figure out which dancer is the other player and find them with the spotlight.
+    The real dancer will move exactly with the beat.
 
     Use the analog stick to move the spotlight and any button to choose.
 
@@ -302,8 +303,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 75, y: 0}
-  m_SizeDelta: {x: 422, y: 233}
+  m_AnchoredPosition: {x: 75, y: 34}
+  m_SizeDelta: {x: 320.5, y: 233}
   m_Pivot: {x: 0, y: 0}
 --- !u!224 &224181404836394000
 RectTransform:
@@ -320,8 +321,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -75, y: 0}
-  m_SizeDelta: {x: 422, y: 233}
+  m_AnchoredPosition: {x: -62, y: 34}
+  m_SizeDelta: {x: 347.9, y: 233}
   m_Pivot: {x: 1, y: 0}
 --- !u!224 &224708145068837546
 RectTransform:
@@ -338,6 +339,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -6.7199993, y: -99.857155}
+  m_AnchoredPosition: {x: -6.7199993, y: -62}
   m_SizeDelta: {x: -333.39, y: 169.58}
   m_Pivot: {x: 0.5, y: 1}
