@@ -70,7 +70,8 @@ public class PlayerTwoBehavior : MonoBehaviour
           Game.Instance.HunterWin();
         }
         else if (touchingComputer)
-        {
+        { 
+            Failure();
             Game.Instance.AddHunterFailure();
         }
     }
@@ -100,6 +101,11 @@ public class PlayerTwoBehavior : MonoBehaviour
         {
             touchingComputer = false;
         }
+    }
+
+    public void Failure() {
+      Camera.main.GetComponent<CameraBehavior>().Shake();
+      // Sound effect
     }
 
     void Update()

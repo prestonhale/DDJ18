@@ -25,6 +25,8 @@ GameObject:
   - component: {fileID: 82908985338639362}
   - component: {fileID: 82394532862538644}
   - component: {fileID: 114977798135627280}
+  - component: {fileID: 114231701200361860}
+  - component: {fileID: 114599219635175120}
   m_Layer: 0
   m_Name: _MusicCamera
   m_TagString: MainCamera
@@ -38,13 +40,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1697001411145302}
-  m_LocalRotation: {x: 0.5030199, y: 0, z: 0, w: 0.8642748}
-  m_LocalPosition: {x: 0, y: 7.05, z: 16.68}
+  m_LocalRotation: {x: 0.5189545, y: -0, z: -0, w: 0.8548019}
+  m_LocalPosition: {x: -1.2, y: 28.6, z: 4.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 60.4, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 62.524002, y: 0, z: 0}
 --- !u!20 &20115908700693132
 Camera:
   m_ObjectHideFlags: 1
@@ -54,7 +56,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.09558821, g: 0.0454868, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -62,8 +64,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 30
-  field of view: 85.8
+  far clip plane: 1200
+  field of view: 33.689327
   orthographic: 0
   orthographic size: 9.564431
   m_Depth: -1
@@ -249,6 +251,34 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114231701200361860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1697001411145302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eed1d9cbe64423499f1fefc0ce50417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Resolution: 1
+  DefaultSpotCookie: {fileID: 0}
+--- !u!114 &114599219635175120
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1697001411145302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab9511cbd8854de2bb3478a288a2881, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeAmount: 0.2
+  decreaseFactor: 1
+  shakeTime: 0.1
+  startPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &114977798135627280
 MonoBehaviour:
   m_ObjectHideFlags: 1
