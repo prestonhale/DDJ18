@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Scenes/Menu.unity
+    guid: 7cf1f845248aaf44da90e25c918c227c
+  - enabled: 1
+    path: Assets/_Scenes/Warehouse - Preston.unity
+    guid: c74399cd1acf640a885eb170c22038c6
