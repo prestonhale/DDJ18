@@ -68,6 +68,7 @@ public class SimpleBeatDetection : MonoBehaviour
             // Beat!
             if (OnBeat != null && (Time.time - lastBeat > 0.2f)){
                 lastBeat = Time.time;
+                Debug.Log("Beat");
                 OnBeat();
             }
         }
