@@ -115,18 +115,11 @@ public class PlayerTwoBehavior : MonoBehaviour
 
     void Update()
     {
-<<<<<<< HEAD
-      if (Input.GetKey("joystick 2 button " + i))
-      {
-        expanded = true;
-        if (lightProgress >= 1f && (Time.time >= timeOfLastHumanCheck + intervalHumanCheck))
-=======
         transform.position = GetMovement();
         hunterLight.transform.LookAt(transform.position);
 
         bool expanded = false;
         for (int i = 0; i < 20; i++)
->>>>>>> 792e941537500a273cef0ca79098d36e9a0f877a
         {
             if (Input.GetKey("joystick 2 button " + i))
             {
