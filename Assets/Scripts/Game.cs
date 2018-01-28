@@ -5,15 +5,15 @@ using UnityEngine;
 [System.Serializable]
 public enum Direction
 {
-    N,
-    NE,
-    E,
-    SE,
-    S,
-    SW,
-    W,
-    NW,
-    None
+  N,
+  NE,
+  E,
+  SE,
+  S,
+  SW,
+  W,
+  NW,
+  None
 }
 
 
@@ -30,11 +30,11 @@ public static class Directions
         new Vector3 (-1, 0, 1),
         new Vector3 (0, 0, 0)
     };
-    
-    public static Vector3 ToVector3(this Direction direction)
-    {
-        return vectors[(int)direction];
-    }
+
+  public static Vector3 ToVector3(this Direction direction)
+  {
+    return vectors[(int)direction];
+  }
 }
 
 public class Game : MonoBehaviour
@@ -55,13 +55,22 @@ public class Game : MonoBehaviour
   private CanvasGroup canvasGroup;
   private bool gameOver = false;
 
-  public UnityEngine.UI.Text text;
+  public UnityEngine.UI.Text winnerText;
+  public UnityEngine.UI.Text playAgainText;
 
-  public void DancerWin(){
+
+  public Font dancerFont;
+  public Font hunterFont;
+
+  public GameObject GameOverUI;
+
+  public void DancerWin()
+  {
     Debug.Log("Dancer Wins");
   }
-  
-  public void HunterWin(){
+
+  public void HunterWin()
+  {
     Debug.Log("Hunter Wins");
   }
 
@@ -88,10 +97,23 @@ public class Game : MonoBehaviour
   public void GameOver(int winner)
   {
     string winnerName = winner == 0 ? "Dancer" : "Hunter";
+    Font font = winner == 0 ? dancerFont : hunterFont;
 
-    canvasGroup.alpha = 1;
-    text.text = "The " + winnerName + " Won!";
+    winnerText.font = font;
+    playAgainText.font = font;
+    winnerText.text = "The " + winnerName + " Won!";
+    playAgainText.text = "Press Square to Play Again.";
+    StartCoroutine(FadeTo(0.0f, 1f));
     gameOver = true;
+  }
+
+  IEnumerator FadeTo(float aValue, float aTime)
+  {
+    for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / aTime)
+    {
+      GameOverUI.GetComponent<CanvasGroup>().alpha = 0.75f * t;
+      yield return null;
+    }
   }
   void Awake()
   {
