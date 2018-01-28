@@ -4,7 +4,6 @@ using UnityEngine;
 
 [System.Serializable]
 public enum Controller{
-    keys,
     joystick
 }
 
@@ -44,13 +43,8 @@ class Player: MonoBehaviour{
     public void Move(){
         string hAxisName;
         string vAxisName;
-        if (controller == Controller.joystick){
-            hAxisName = "Dancer_Horizontal_Joystick";
-            vAxisName = "Dancer_Verical_Joystick";
-        } else {
-            Debug.Log("No controller type");
-            return;
-        }
+        hAxisName = "Dancer_Horizontal_Joystick";
+        vAxisName = "Dancer_Vertical_Joystick";
         var horizontal = Input.GetAxis(hAxisName);
         var vertical = Input.GetAxis(vAxisName);
         Direction direction;
