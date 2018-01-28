@@ -98,8 +98,10 @@ public class Game : MonoBehaviour
   {
     string winnerName = winner == 0 ? "Dancer" : "Hunter";
     Font font = winner == 0 ? dancerFont : hunterFont;
+    var color = winner == 0 ? new Color(0.0f / 255.0f, 78.0f / 255.0f, 206.0f / 255.0f) : new Color(236.0f / 255f, 7.0f / 255f, 7.0f / 255f);
 
     winnerText.font = font;
+    winnerText.color = color;
     playAgainText.font = font;
     winnerText.text = "The " + winnerName + " Won!";
     playAgainText.text = "Press Square to Play Again.";
