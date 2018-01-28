@@ -43,9 +43,6 @@ public class Game : MonoBehaviour
   public int hunterFailures = 0;
   public int maxHunterFailures = 3;
 
-  public int dancerLocations = 0;
-  public int maxDancerLocations = 5;
-
   public static Game Instance;
 
   public Map map;
@@ -56,6 +53,7 @@ public class Game : MonoBehaviour
   public UnityEngine.UI.Text playAgainText;
 
   public UnityEngine.UI.Text hunterFailureNumber;
+  public UnityEngine.UI.Text remainingDancers;
 
   public Font dancerFont;
   public Font hunterFont;
@@ -156,6 +154,8 @@ public class Game : MonoBehaviour
     {
       UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
     }
+
+    remainingDancers.text = Game.Instance.npcManager.npcCount - Game.Instance.npcManager.infectedCount + "/" + Game.Instance.npcManager.npcCount + " Remaining";
   }
 
 }
