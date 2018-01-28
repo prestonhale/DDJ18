@@ -78,12 +78,12 @@ public class Game : MonoBehaviour
   public void DancerWin()
   {
     Debug.Log("Dancer win!");
-    GameOver(1);
+    GameOver(0);
   }
 
   public void HunterWin(){
     Debug.Log("Hunter win!");
-    GameOver(0);
+    GameOver(1);
   }
   
   public void AddHunterFailure()
