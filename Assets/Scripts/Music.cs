@@ -65,6 +65,7 @@ public class Music : MonoBehaviour
     {
         _drumAudioSource.volume = 1;
         _drumAudioSource.outputAudioMixerGroup = nullOutputGroup;
+        _audioSource.outputAudioMixerGroup = null;
         _audioSource.volume = 1;
         _drumAudioSource.Play();
         _audioSource.Play();

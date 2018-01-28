@@ -8803,6 +8803,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114122776780987556, guid: 5b59a5acc807251428d9d92d9bd5e630,
+        type: 2}
+      propertyPath: musicClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5f9a664164f38744fa4618467f380e81, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5b59a5acc807251428d9d92d9bd5e630, type: 2}
   m_IsPrefabParent: 0
@@ -9094,7 +9099,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4489148383259164, guid: 4a99011473ea61944a76700b1fcda76a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 25.6
+      value: 28.6
       objectReference: {fileID: 0}
     - target: {fileID: 4489148383259164, guid: 4a99011473ea61944a76700b1fcda76a, type: 2}
       propertyPath: m_LocalPosition.z
