@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.24647513, g: 0.28234503, b: 0.34570262, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -209,6 +209,55 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224617189499244096, guid: 9bd75ab66b9def6469bf97ac5cabeb76,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -23
+      objectReference: {fileID: 0}
+    - target: {fileID: 1459761843997800, guid: 9bd75ab66b9def6469bf97ac5cabeb76, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114880238390456594, guid: 9bd75ab66b9def6469bf97ac5cabeb76,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.61764705
+      objectReference: {fileID: 0}
+    - target: {fileID: 114880238390456594, guid: 9bd75ab66b9def6469bf97ac5cabeb76,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.61764705
+      objectReference: {fileID: 0}
+    - target: {fileID: 114880238390456594, guid: 9bd75ab66b9def6469bf97ac5cabeb76,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.61764705
+      objectReference: {fileID: 0}
+    - target: {fileID: 114880238390456594, guid: 9bd75ab66b9def6469bf97ac5cabeb76,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224617189499244096, guid: 9bd75ab66b9def6469bf97ac5cabeb76,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -6.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 224617189499244096, guid: 9bd75ab66b9def6469bf97ac5cabeb76,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -213.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 224617189499244096, guid: 9bd75ab66b9def6469bf97ac5cabeb76,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 86.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114650671869092096, guid: 9bd75ab66b9def6469bf97ac5cabeb76,
+        type: 2}
+      propertyPath: m_UiScaleMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9bd75ab66b9def6469bf97ac5cabeb76, type: 2}
@@ -423,18 +472,95 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114036203760457470, guid: 1fdf68eb492c7574187a31755c4ca987,
+        type: 2}
+      propertyPath: m_Text
+      value: 'P1: YOU ARE THE DANCER
+
+
+        Move to the beat and transmiit your groove to the other dancers to win
+
+
+        Use the analog stick to move and hide from the hunter'
+      objectReference: {fileID: 0}
     - target: {fileID: 114403183582187122, guid: 1fdf68eb492c7574187a31755c4ca987,
         type: 2}
       propertyPath: m_Text
-      value: 'HUNTER:
+      value: 'P2: YOU ARE THE HUNTER
 
 
-        Figure out which dancer is the other player and find them with the spotlight.
-        The real dancer will move exactly with the beat.
+        Figure out which dancer is the other player and find them with the spotlight
 
-        Use the analog stick to move the spotlight and any button to choose.
 
-        Be careful, you only get 3 chances.'
+        The real dancer will move exactly with the beat
+
+
+        Use the analog stick to move the spotlight and hold any button to focus the
+        light'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1604510515764660, guid: 1fdf68eb492c7574187a31755c4ca987, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224145975605639480, guid: 1fdf68eb492c7574187a31755c4ca987,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -181
+      objectReference: {fileID: 0}
+    - target: {fileID: 224145975605639480, guid: 1fdf68eb492c7574187a31755c4ca987,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 69
+      objectReference: {fileID: 0}
+    - target: {fileID: 224181404836394000, guid: 1fdf68eb492c7574187a31755c4ca987,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 30.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224181404836394000, guid: 1fdf68eb492c7574187a31755c4ca987,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 225.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 224181404836394000, guid: 1fdf68eb492c7574187a31755c4ca987,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 271.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 224145975605639480, guid: 1fdf68eb492c7574187a31755c4ca987,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224145975605639480, guid: 1fdf68eb492c7574187a31755c4ca987,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -527.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 224145975605639480, guid: 1fdf68eb492c7574187a31755c4ca987,
+        type: 2}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224181404836394000, guid: 1fdf68eb492c7574187a31755c4ca987,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224181404836394000, guid: 1fdf68eb492c7574187a31755c4ca987,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -494.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 224181404836394000, guid: 1fdf68eb492c7574187a31755c4ca987,
+        type: 2}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114682425084366860, guid: 1fdf68eb492c7574187a31755c4ca987,
+        type: 2}
+      propertyPath: m_UiScaleMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1fdf68eb492c7574187a31755c4ca987, type: 2}
