@@ -61,7 +61,7 @@ public class NPCManager: MonoBehaviour {
     }
 
     public float GetRandomDanceTime(){
-        var nextTime = Music.Instance.beatLength * Random.Range(0.2f, 0.8f);
+        var nextTime = Music.Instance.beatLength * Random.Range(0.1f, 0.9f);
         return Time.time + nextTime;
     }
 

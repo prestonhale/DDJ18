@@ -76,13 +76,9 @@ public class Game : MonoBehaviour
   public bool testingRevealPlayer = false;
 
   void Start(){
-    if (testingRevealPlayer){
-      SetupLevel();
-    } else {
-      SetupLevel();
-      HidePlayer();
-      StartLevel();
-    }
+    SetupLevel();
+    HidePlayer();
+    StartLevel();
   }
   
   public void SetupLevel() {
@@ -90,8 +86,6 @@ public class Game : MonoBehaviour
     player.SpawnPlayer();
     npcManager = Instantiate(npcManager, Vector3.zero, Quaternion.identity).GetComponent<NPCManager>();
     npcManager.SpawnNPCs();
-
-    hunterFailureNumber.text = "X X X";
   }
 
   public void HidePlayer(){
@@ -102,6 +96,7 @@ public class Game : MonoBehaviour
   public void StartLevel(){
     gameState = GameState.Started;
     Music.Instance.Play();
+    hunterFailureNumber.text = "X X X";
   }
 
   public void DancerWin()
