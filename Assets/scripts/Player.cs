@@ -92,19 +92,28 @@ public class Player: MonoBehaviour{
     }
 
     public void BeatSuccess(){
-        this.GetComponent<MeshRenderer>().material.color = Color.green;
+        MeshRenderer mRenderer = this.GetComponent<MeshRenderer>();
+        if (mRenderer != null) {
+            mRenderer.material.color = Color.green;
+        }
         hitThisBeat = true;
         StartCoroutine(ReturnToColor());
     }
 
     public void BeatFail(){
-        this.GetComponent<MeshRenderer>().material.color = Color.red;
+        MeshRenderer mRenderer = this.GetComponent<MeshRenderer>();
+        if (mRenderer != null) {
+            mRenderer.material.color = Color.red;
+        }
         StartCoroutine(ReturnToColor());
     }
 
     IEnumerator ReturnToColor(){
         yield return new WaitForSeconds(0.1f);
-        this.GetComponent<MeshRenderer>().material.color = Color.white;
+        MeshRenderer mRenderer = this.GetComponent<MeshRenderer>();
+        if (mRenderer != null) {
+            mRenderer.material.color = Color.white;
+        }
     }
 
     public void Move(){
