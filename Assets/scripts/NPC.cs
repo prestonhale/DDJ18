@@ -7,13 +7,12 @@ public class NPC: MonoBehaviour
 {
     public bool colored = true;
     public float movementScale = 1;
-    public bool isPlayer;
-    public float transmitRadius;
-    public float transmitSuccessChance;
+    public bool infected;
 
 
     public bool dancedThisBeat = false;
     public float nextDanceTime;
+    public NPCManager manager;
 
     public Material material;
 
@@ -26,11 +25,7 @@ public class NPC: MonoBehaviour
     void Start()
     {   
         material = transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material;
-        if (isPlayer) {
-            material.color = Color.blue;
-        } else {
-            material.color = GetRandColor();
-        }
+        material.color = GetRandColor();
     }
 
     void Update(){
@@ -38,9 +33,6 @@ public class NPC: MonoBehaviour
             if(!dancedThisBeat){
                 Dance();
             }
-        }
-        if (isPlayer && Input.GetKeyDown(KeyCode.P)){
-            Transmit();
         }
     }
 
@@ -82,19 +74,10 @@ public class NPC: MonoBehaviour
     }
 
     public void WasTransmittedTo(){
-        material.color = Color.cyan;
-    }
-
-    void Transmit(){
-        var layermask = 1 << 8;
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, transmitRadius, layermask);
-        for (int i=0; i < hitColliders.Length; i++){
-            var NPC = hitColliders[i].transform.parent.GetComponent<NPC>();
-            if (NPC){
-                if (Random.value <= transmitSuccessChance){
-                    NPC.WasTransmittedTo();
-                }
-            }
+        if (!infected){
+            material.color = Color.cyan;
+            manager.NotifyInfected();
+            infected = true;
         }
     }
 }

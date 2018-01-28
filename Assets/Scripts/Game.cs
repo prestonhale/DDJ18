@@ -12,7 +12,8 @@ public enum Direction
   S,
   SW,
   W,
-  NW
+  NW,
+  None
 }
 
 
@@ -26,7 +27,8 @@ public static class Directions
         new Vector3 (0, 0, -1),
         new Vector3 (-1, 0, -1),
         new Vector3 (-1, 0, 0),
-        new Vector3 (-1, 0, 1)
+        new Vector3 (-1, 0, 1),
+        new Vector3 (0, 0, 0)
     };
 
   public static Vector3 ToVector3(this Direction direction)
@@ -56,10 +58,22 @@ public class Game : MonoBehaviour
   public UnityEngine.UI.Text winnerText;
   public UnityEngine.UI.Text playAgainText;
 
+
   public Font dancerFont;
   public Font hunterFont;
 
   public GameObject GameOverUI;
+
+  public void DancerWin()
+  {
+    Debug.Log("Dancer Wins");
+  }
+
+  public void HunterWin()
+  {
+    Debug.Log("Hunter Wins");
+  }
+
   public void AddDancerLocation()
   {
     dancerLocations++;
@@ -127,4 +141,5 @@ public class Game : MonoBehaviour
       UnityEngine.SceneManagement.SceneManager.LoadScene("Warehouse - Patric");
     }
   }
+
 }
