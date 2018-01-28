@@ -21,7 +21,8 @@ public enum Direction
 public enum GameState
 {
   RevealPlayer,
-  ReadyToStart
+  ReadyToStart,
+  Started
 }
 
 
@@ -101,6 +102,7 @@ public class Game : MonoBehaviour
   }
 
   public void StartLevel(){
+    gameState = GameState.Started;
     Music.Instance.Play();
   }
 
