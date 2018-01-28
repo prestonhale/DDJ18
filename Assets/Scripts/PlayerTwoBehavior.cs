@@ -39,7 +39,8 @@ public class PlayerTwoBehavior : MonoBehaviour
   {
     if (touchingPlayer)
     {
-      Game.Instance.GameOver(1);
+      Debug.Log("YOU WIN!");
+      // Game.Instance.GameOver(1);
     }
     else if (touchingComputer)
     {
