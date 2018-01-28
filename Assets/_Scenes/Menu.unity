@@ -476,7 +476,7 @@ Prefab:
         type: 2}
       propertyPath: m_Text
       value: "P1: YOU ARE THE DANCER\n\nFigure out which dancer you are! Use the analog
-        stick and your dancer will move to the beat\n\nyou will automatically transmit
+        stick and your dancer will move to the beat\n\npress any button to transmit
         your groove to nearby dancers \n"
       objectReference: {fileID: 0}
     - target: {fileID: 114403183582187122, guid: 1fdf68eb492c7574187a31755c4ca987,
@@ -485,14 +485,16 @@ Prefab:
       value: 'P2: YOU ARE THE HUNTER
 
 
-        Figure out which dancer is the other player and find them with the spotlight
+        Figure out which dancer is the other player and detect them with the spotlight
+
+
+        Use the analog stick to move the spotlight and press any button to detect
+        the dancer
 
 
         Only the enemy dancer moves exactly with the beat
 
-
-        Use the analog stick to move the spotlight and hold any button to focus the
-        light'
+'
       objectReference: {fileID: 0}
     - target: {fileID: 1604510515764660, guid: 1fdf68eb492c7574187a31755c4ca987, type: 2}
       propertyPath: m_IsActive
@@ -511,7 +513,7 @@ Prefab:
     - target: {fileID: 224181404836394000, guid: 1fdf68eb492c7574187a31755c4ca987,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 30.2
+      value: 14.7
       objectReference: {fileID: 0}
     - target: {fileID: 224181404836394000, guid: 1fdf68eb492c7574187a31755c4ca987,
         type: 2}
@@ -521,7 +523,7 @@ Prefab:
     - target: {fileID: 224181404836394000, guid: 1fdf68eb492c7574187a31755c4ca987,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 271.8
+      value: 287.3
       objectReference: {fileID: 0}
     - target: {fileID: 224145975605639480, guid: 1fdf68eb492c7574187a31755c4ca987,
         type: 2}
