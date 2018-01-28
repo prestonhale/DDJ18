@@ -51,12 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e755519ca28a4510bb70778400823b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcCount: 20
+  npcCount: 30
   infectedCount: 0
   npc: {fileID: 1284330090228086, guid: 4cb612f1779cf4c31818112a78710ae8, type: 2}
   spawnPlayer: 1
   player: {fileID: 0}
-  NPCMoveChance: 0.5
+  NPCMoveChance: 0.8
   NPCs: []
   colors:
   - {r: 1, g: 0, b: 0, a: 1}

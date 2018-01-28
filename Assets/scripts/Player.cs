@@ -30,7 +30,6 @@ public class Player: MonoBehaviour{
 
     public void OnBeatDetected(){
         Move();
-        Transmit();
     }
 
     public void SpawnPlayer(){
@@ -51,6 +50,12 @@ public class Player: MonoBehaviour{
     public void Update(){
         if (Input.GetKeyDown(KeyCode.Space)){
             HitBeat();
+        }
+        for (int i = 0; i < 20; i++)
+        {
+            if (Input.GetKey("joystick 1 button " + i)){
+                Transmit();
+            }
         }
         if (checkingBeat){
             if (Music.Instance.timeSinceLastBeat > (beatLength - beatBuffer)){

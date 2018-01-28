@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 136453993297732064}
   - component: {fileID: 23017086330600642}
   - component: {fileID: 54144965395881096}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Capsule
   m_TagString: Computer
   m_Icon: {fileID: 0}

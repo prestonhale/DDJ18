@@ -17,16 +17,23 @@ public class NPCManager: MonoBehaviour {
     }
 
     public void SpawnNPCs(){
+        int numOfColor = 0;
+        int colorIndex = 0; 
         for (int i=0; i < npcCount; i++){
-            NPCs.Add(SpawnNPC());
+            if (numOfColor > Mathf.Round(npcCount/colors.Length)){
+                colorIndex += 1;
+                numOfColor = 0;
+            }
+            NPCs.Add(SpawnNPC(colors[colorIndex]));
+            numOfColor += 1;
         }
     }
     
-    public NPC SpawnNPC(){
+    public NPC SpawnNPC(Color color){
         var newSpawnPosition = Game.Instance.map.GetRandSpawnPos();
         var newNpc = Instantiate(npc, newSpawnPosition, Quaternion.identity).GetComponent<NPC>();
         newNpc.manager = this;
-        newNpc.SetColor(GetRandColor());
+        newNpc.SetColor(color);
         return newNpc;
     }
 
