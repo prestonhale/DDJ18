@@ -47,9 +47,6 @@ class Player: MonoBehaviour{
         if (controller == Controller.joystick){
             hAxisName = "Dancer_Horizontal_Joystick";
             vAxisName = "Dancer_Verical_Joystick";
-        } else if (controller == Controller.keys){
-            hAxisName = "Dancer_Horizontal_Key";
-            vAxisName = "Dancer_Vertical_Key";
         } else {
             Debug.Log("No controller type");
             return;
@@ -60,8 +57,6 @@ class Player: MonoBehaviour{
         if (horizontal != 0 || vertical != 0){
             if (controller == Controller.joystick){
                 direction = InputAxisToDirection(horizontal, vertical);
-            } else if (controller == Controller.keys){
-                direction = KeysToDirection(horizontal, vertical);
             } else {
                 Debug.Log("No controller type");
                 return;
@@ -101,31 +96,4 @@ class Player: MonoBehaviour{
         return Direction.None;
     }
 
-    public Direction KeysToDirection(float horizontal, float vertical){
-        if (vertical >= 0){
-            if (horizontal == 0){
-                return Direction.E;
-            } else if (horizontal == 1){
-                return Direction.NE;
-            } else if (horizontal == 0){
-                return Direction.N;
-            } else if (horizontal == -1){
-                return Direction.NW;
-            } else {
-                return Direction.W;
-            }
-        } else {
-            if (horizontal == 0){
-                return Direction.E;
-            } else if (horizontal == 1){
-                return Direction.SE;
-            } else if (horizontal == 0){
-                return Direction.S;
-            } else if (horizontal == -1){
-                return Direction.SW;
-            } else {
-                return Direction.W;
-            }
-        }
-    }
 }

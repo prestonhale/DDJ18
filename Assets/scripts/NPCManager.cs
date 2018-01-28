@@ -25,7 +25,9 @@ public class NPCManager: MonoBehaviour {
     }
     
     public NPC SpawnNPC(){
-        var newNpc = Instantiate(npc, spawnPosition, Quaternion.identity).GetComponent<NPC>();
+        var newSpawnPosition = GetRandSpawnPos();
+        var newNpc = Instantiate(npc, newSpawnPosition, Quaternion.identity).GetComponent<NPC>();
+        Debug.Log(newSpawnPosition);
         newNpc.manager = this;
         return newNpc;
     }
@@ -52,5 +54,15 @@ public class NPCManager: MonoBehaviour {
     public float GetRandomDanceTime(){
         var nextTime = Music.Instance.beatLength * Random.Range(0.2f, 0.8f);
         return Time.time + nextTime;
+    }
+
+    public Vector3 GetRandSpawnPos(){
+        var cleanMinX = Mathf.Round(Game.Instance.map.minX);
+        var cleanMaxX = Mathf.Round(Game.Instance.map.maxX);
+        var cleanMinZ = Mathf.Round(Game.Instance.map.minZ);
+        var cleanMaxZ = Mathf.Round(Game.Instance.map.maxZ);
+        var xLoc = Random.Range(cleanMinX, cleanMaxX);
+        var zLoc = Random.Range(cleanMinZ, cleanMaxZ);
+        return new Vector3(xLoc, 0, zLoc);
     }
 }

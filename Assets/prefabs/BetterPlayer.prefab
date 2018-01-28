@@ -136,5 +136,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abff273a77cc94de1b68ed3d38fdf872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transmitSuccessChance: 0
-  transmitRadius: 0
+  transmitSuccessChance: 1
+  transmitRadius: 2
+  controller: 0
