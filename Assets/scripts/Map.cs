@@ -23,4 +23,11 @@ public class Map: MonoBehaviour {
             }
         return true;
     }
+  
+    public Vector3 GetRandSpawnPos(){
+        var xLoc = Mathf.Round(Random.Range(minX, maxX));
+        var zLoc = Mathf.Round(Random.Range(minZ, maxZ));
+        return new Vector3(xLoc, 0, zLoc);
+    }
+
 }

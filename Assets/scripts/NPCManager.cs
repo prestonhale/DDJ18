@@ -10,27 +10,31 @@ public class NPCManager: MonoBehaviour {
     public GameObject player;
     public float NPCMoveChance = 0.5f;
     public List<NPC> NPCs = new List<NPC>();
-    public Vector3 spawnPosition;
     public Color[] colors = new Color[] { Color.red, Color.yellow, Color.green };
 
     public void Start(){
-        spawnPosition = transform.position;
         Music.Instance.beatDetector.OnBeat += OnBeatDetected;
-        SpawnNPCs();
     }
 
     public void SpawnNPCs(){
         for (int i=0; i < npcCount; i++){
             NPCs.Add(SpawnNPC());
         }
+        RevealAllColors();
     }
     
     public NPC SpawnNPC(){
-        var newSpawnPosition = GetRandSpawnPos();
+        var newSpawnPosition = Game.Instance.map.GetRandSpawnPos();
         var newNpc = Instantiate(npc, newSpawnPosition, Quaternion.identity).GetComponent<NPC>();
         newNpc.manager = this;
         newNpc.SetColor(GetRandColor());
         return newNpc;
+    }
+
+    public void RevealAllColors(){
+        for(int i=0; i < NPCs.Count; i++){
+            NPCs[i].RevealColor();
+        }
     }
     
     public Color GetRandColor(){
@@ -55,6 +59,7 @@ public class NPCManager: MonoBehaviour {
         if (infectedCount >= npcCount){
             Game.Instance.DancerWin();
         }
+        // Debug.Log("Infected: " +infectedCount+"\nTotal: "+npcCount);
     }
 
     public float GetRandomDanceTime(){
@@ -62,13 +67,4 @@ public class NPCManager: MonoBehaviour {
         return Time.time + nextTime;
     }
 
-    public Vector3 GetRandSpawnPos(){
-        var cleanMinX = Mathf.Round(Game.Instance.map.minX);
-        var cleanMaxX = Mathf.Round(Game.Instance.map.maxX);
-        var cleanMinZ = Mathf.Round(Game.Instance.map.minZ);
-        var cleanMaxZ = Mathf.Round(Game.Instance.map.maxZ);
-        var xLoc = Random.Range(cleanMinX, cleanMaxX);
-        var zLoc = Random.Range(cleanMinZ, cleanMaxZ);
-        return new Vector3(xLoc, 0, zLoc);
-    }
 }

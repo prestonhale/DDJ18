@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 33413175132895114}
   - component: {fileID: 65836868761862158}
   - component: {fileID: 23932262343048040}
-  - component: {fileID: 114558174317616666}
   m_Layer: 0
   m_Name: BetterPlayer
   m_TagString: Untagged
@@ -38,9 +37,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4563926293674366}
+  - component: {fileID: 114401982268956994}
   m_Layer: 0
   m_Name: BetterPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65,7 +65,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1767206906581600}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.25, y: 0, z: 17.81}
+  m_LocalPosition: {x: 41.46, y: 0, z: 14.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4426100174139772}
@@ -125,12 +125,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114558174317616666
+--- !u!114 &114401982268956994
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1075693835650218}
+  m_GameObject: {fileID: 1767206906581600}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: abff273a77cc94de1b68ed3d38fdf872, type: 3}
@@ -139,3 +139,12 @@ MonoBehaviour:
   transmitSuccessChance: 1
   transmitRadius: 2
   controller: 0
+  beatLength: 0.75
+  beatBuffer: 0.2
+  hitThisBeat: 1
+  color: {r: 0, g: 0, b: 0, a: 0}
+  colors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  checkingBeat: 0

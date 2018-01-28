@@ -56,10 +56,11 @@ MonoBehaviour:
   dancerLocations: 0
   maxDancerLocations: 5
   map: {fileID: 0}
-  winnerText: {fileID: 114630493250101008, guid: 83d9539973c6288429732bb8f51c8717,
-    type: 2}
-  playAgainText: {fileID: 114939398209540346, guid: 83d9539973c6288429732bb8f51c8717,
-    type: 2}
+  winnerText: {fileID: 0}
+  playAgainText: {fileID: 0}
   dancerFont: {fileID: 12800000, guid: 1f094d70e07e97440b055d14f2edf74c, type: 3}
   hunterFont: {fileID: 12800000, guid: 5d9e553dd5cccc146b996825186fe307, type: 3}
-  GameOverUI: {fileID: 1327594818778214, guid: 83d9539973c6288429732bb8f51c8717, type: 2}
+  GameOverUI: {fileID: 0}
+  player: {fileID: 114401982268956994, guid: 905e83377d2e04cbc9fd7022fa278ed5, type: 2}
+  npcManager: {fileID: 114977014129345384, guid: fb148fa84bbb14638abdcd9bdbc5a8d9,
+    type: 2}
