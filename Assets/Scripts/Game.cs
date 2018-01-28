@@ -101,14 +101,12 @@ public class Game : MonoBehaviour
 
   public void DancerWin()
   {
-    Debug.Log("Dancer win!");
-    GameOver(1);
+    GameOver(1, "Dancer wins!\nTransmitted to everyone");
   }
 
   public void HunterWin()
   {
-    Debug.Log("Hunter win!");
-    GameOver(0);
+    GameOver(0, "Hunter wins!\nDancer was spotted");
   }
 
   public void AddHunterFailure()
@@ -128,20 +126,19 @@ public class Game : MonoBehaviour
     if (hunterFailures >= maxHunterFailures)
     {
       hunterFailureNumber.text = "";
-      GameOver(1);
+      GameOver(1, "Dancer wins!\nHunter ran out of spotlight");
     }
   }
 
-  public void GameOver(int winner)
+  public void GameOver(int winner, string winText)
   {
-    string winnerName = winner == 1 ? "Dancer" : "Hunter";
     Font font = winner == 1 ? dancerFont : hunterFont;
     var color = winner == 1 ? new Color(0.0f / 255.0f, 78.0f / 255.0f, 206.0f / 255.0f) : new Color(236.0f / 255f, 7.0f / 255f, 7.0f / 255f);
 
     winnerText.font = font;
     winnerText.color = color;
     playAgainText.font = font;
-    winnerText.text = "The " + winnerName + " Won!";
+    winnerText.text = winText;
     playAgainText.text = "Press Spacebar to Restart";
     StartCoroutine(FadeTo(0.0f, 1f));
     gameOver = true;
