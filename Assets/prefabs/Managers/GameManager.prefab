@@ -34,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1640117313142766}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.0867083, y: -0.027050018, z: -2.2361598}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -55,12 +55,11 @@ MonoBehaviour:
   maxHunterFailures: 3
   dancerLocations: 0
   maxDancerLocations: 5
-  canvas: {fileID: 0}
   map: {fileID: 0}
   winnerText: {fileID: 0}
   playAgainText: {fileID: 0}
-  dancerFont: {fileID: 0}
-  hunterFont: {fileID: 0}
+  dancerFont: {fileID: 12800000, guid: 1f094d70e07e97440b055d14f2edf74c, type: 3}
+  hunterFont: {fileID: 12800000, guid: 5d9e553dd5cccc146b996825186fe307, type: 3}
   GameOverUI: {fileID: 0}
   player: {fileID: 114401982268956994, guid: 905e83377d2e04cbc9fd7022fa278ed5, type: 2}
   npcManager: {fileID: 114977014129345384, guid: fb148fa84bbb14638abdcd9bdbc5a8d9,
