@@ -65,7 +65,6 @@ public class Player: MonoBehaviour{
     public void Transmit(){
         var layermask = 1 << 8;
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, transmitRadius, layermask);
-        Debug.Log(hitColliders.Length);
         for (int i=0; i < hitColliders.Length; i++){
             var NPC = hitColliders[i].transform.parent.GetComponent<NPC>();
             if (NPC){
@@ -93,19 +92,28 @@ public class Player: MonoBehaviour{
     }
 
     public void BeatSuccess(){
-        this.GetComponent<MeshRenderer>().material.color = Color.green;
+        MeshRenderer mRenderer = this.GetComponent<MeshRenderer>();
+        if (mRenderer != null) {
+            mRenderer.material.color = Color.green;
+        }
         hitThisBeat = true;
         StartCoroutine(ReturnToColor());
     }
 
     public void BeatFail(){
-        this.GetComponent<MeshRenderer>().material.color = Color.red;
+        MeshRenderer mRenderer = this.GetComponent<MeshRenderer>();
+        if (mRenderer != null) {
+            mRenderer.material.color = Color.red;
+        }
         StartCoroutine(ReturnToColor());
     }
 
     IEnumerator ReturnToColor(){
         yield return new WaitForSeconds(0.1f);
-        this.GetComponent<MeshRenderer>().material.color = Color.white;
+        MeshRenderer mRenderer = this.GetComponent<MeshRenderer>();
+        if (mRenderer != null) {
+            mRenderer.material.color = Color.white;
+        }
     }
 
     public void Move(){
@@ -122,7 +130,7 @@ public class Player: MonoBehaviour{
             } else {
                 return;
             }
-            transform.Translate(direction.ToVector3());
+            transform.Translate(direction.ToVector3(), Space.World);
             transform.LookAt(transform.position + direction.ToVector3());
         }
     }
