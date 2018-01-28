@@ -55,6 +55,7 @@ public class Game : MonoBehaviour
   public UnityEngine.UI.Text winnerText;
   public UnityEngine.UI.Text playAgainText;
 
+  public UnityEngine.UI.Text hunterFailureNumber;
 
   public Font dancerFont;
   public Font hunterFont;
@@ -64,15 +65,19 @@ public class Game : MonoBehaviour
   public Player player;
   public NPCManager npcManager;
 
-  void Start(){
+  void Start()
+  {
     StartLevel();
   }
-  
-  public void StartLevel() {
+
+  public void StartLevel()
+  {
     player = Instantiate(player, Vector3.zero, Quaternion.identity).GetComponent<Player>();
     player.SpawnPlayer();
     npcManager = Instantiate(npcManager, Vector3.zero, Quaternion.identity).GetComponent<NPCManager>();
     npcManager.SpawnNPCs();
+
+    hunterFailureNumber.text = "X X X";
   }
 
   public void DancerWin()
@@ -81,17 +86,29 @@ public class Game : MonoBehaviour
     GameOver(1);
   }
 
-  public void HunterWin(){
+  public void HunterWin()
+  {
     Debug.Log("Hunter win!");
     GameOver(0);
   }
-  
+
   public void AddHunterFailure()
   {
     hunterFailures++;
 
+    if (hunterFailures == 2)
+    {
+      hunterFailureNumber.text = "X";
+    }
+
+    if (hunterFailures == 1)
+    {
+      hunterFailureNumber.text = "X X";
+    }
+
     if (hunterFailures >= maxHunterFailures)
     {
+      hunterFailureNumber.text = "";
       GameOver(1);
     }
   }
@@ -120,7 +137,7 @@ public class Game : MonoBehaviour
       yield return null;
     }
   }
-    
+
   void Awake()
   {
     if (Instance != null)
