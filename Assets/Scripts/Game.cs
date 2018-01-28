@@ -48,11 +48,8 @@ public class Game : MonoBehaviour
 
   public static Game Instance;
 
-  public Canvas canvas;
-
   public Map map;
 
-  private CanvasGroup canvasGroup;
   private bool gameOver = false;
 
   public UnityEngine.UI.Text winnerText;
@@ -134,7 +131,6 @@ public class Game : MonoBehaviour
     }
     Instance = this;
 
-    canvasGroup = canvas.GetComponent<CanvasGroup>();
   }
 
   // Update is called once per frame
