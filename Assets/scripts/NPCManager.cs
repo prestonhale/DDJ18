@@ -20,7 +20,6 @@ public class NPCManager: MonoBehaviour {
         for (int i=0; i < npcCount; i++){
             NPCs.Add(SpawnNPC());
         }
-        RevealAllColors();
     }
     
     public NPC SpawnNPC(){

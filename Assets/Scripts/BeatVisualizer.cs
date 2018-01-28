@@ -18,7 +18,6 @@ public class BeatVisualizer : MonoBehaviour
         {
             Music.Instance.beatDetector.OnBeat += LightResponse;
         }
-        Music.Instance.Play();
         cubeRenderer = GetComponent<MeshRenderer>();
     }
 

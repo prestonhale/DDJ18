@@ -17,6 +17,14 @@ public enum Direction
 }
 
 
+[System.Serializable]
+public enum GameState
+{
+  RevealPlayer,
+  ReadyToStart
+}
+
+
 public static class Directions
 {
   private static Vector3[] vectors = {
@@ -55,6 +63,7 @@ public class Game : MonoBehaviour
   public UnityEngine.UI.Text winnerText;
   public UnityEngine.UI.Text playAgainText;
 
+  public GameState gameState = GameState.RevealPlayer;
 
   public Font dancerFont;
   public Font hunterFont;
@@ -64,15 +73,32 @@ public class Game : MonoBehaviour
   public Player player;
   public NPCManager npcManager;
 
+  public bool testingRevealPlayer = false;
+
   void Start(){
-    StartLevel();
+    if (testingRevealPlayer){
+      SetupLevel();
+    } else {
+      SetupLevel();
+      HidePlayer();
+      StartLevel();
+    }
   }
   
-  public void StartLevel() {
+  public void SetupLevel() {
     player = Instantiate(player, Vector3.zero, Quaternion.identity).GetComponent<Player>();
     player.SpawnPlayer();
     npcManager = Instantiate(npcManager, Vector3.zero, Quaternion.identity).GetComponent<NPCManager>();
     npcManager.SpawnNPCs();
+  }
+
+  public void HidePlayer(){
+    gameState = GameState.ReadyToStart;
+    npcManager.RevealAllColors();
+  }
+
+  public void StartLevel(){
+    Music.Instance.Play();
   }
 
   public void DancerWin()
@@ -133,8 +159,16 @@ public class Game : MonoBehaviour
   }
 
   // Update is called once per frame
-  void Update()
-  {
+
+  void Update(){
+    if (testingRevealPlayer){
+      if (gameState == GameState.RevealPlayer && Input.GetKeyDown(KeyCode.Space)){
+        HidePlayer();
+      }
+      else if (gameState == GameState.ReadyToStart && Input.GetKeyDown(KeyCode.Space)){
+        StartLevel();
+      }
+    }
     if (gameOver == true && Input.GetKeyDown("space"))
     {
       UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
