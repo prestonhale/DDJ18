@@ -8194,6 +8194,11 @@ Prefab:
       propertyPath: failureSound
       value: 
       objectReference: {fileID: 8300000, guid: 84f51ab22fb8c12448823036de7c4739, type: 3}
+    - target: {fileID: 114494725469229002, guid: 636e029e2fd16d844a52df4be63e0ff2,
+        type: 2}
+      propertyPath: lightSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 636e029e2fd16d844a52df4be63e0ff2, type: 2}
   m_IsPrefabParent: 0

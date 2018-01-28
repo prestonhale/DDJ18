@@ -25,7 +25,7 @@ public class PlayerTwoBehavior : MonoBehaviour
     public float lightEndRange = 24f;
     public float lightEndAngle = 10.8f;
     public Color32 lightEndColor = new Color32(255, 0, 0, 255);
-    public float lightSpeed = 0.8f;
+    public float lightSpeed = 1.4f;
 
     public float lightProgress = 0f;
 
@@ -109,7 +109,6 @@ public class PlayerTwoBehavior : MonoBehaviour
     public void Failure()
     {
         Camera.main.GetComponent<CameraBehavior>().Shake();
-        // Sound effect
         Music.Instance.PlaySFX(failureSound);
     }
 
@@ -118,41 +117,31 @@ public class PlayerTwoBehavior : MonoBehaviour
         transform.position = GetMovement();
         hunterLight.transform.LookAt(transform.position);
 
-        bool expanded = false;
         for (int i = 0; i < 20; i++)
         {
-            if (Input.GetKey("joystick 2 button " + i))
+            if (!humanChecking && Input.GetKeyDown("joystick 1 button " + i))
             {
-                expanded = true;
-                if (lightProgress >= 1f && !humanChecking)
-                {
-                    humanChecking = true;
-                    CheckForHuman();
-                }
-                else
-                {
-                    SetLightProgress(1);
-                }
+                humanChecking = true;
+                StartCoroutine(LightProgress());
             }
-        }
-        if (!expanded)
-        {
-            if (lightProgress > 0)
-                SetLightProgress(-1);
         }
     }
 
-    void SetLightProgress(int multiplier)
+    IEnumerator LightProgress()
     {
-        lightProgress += multiplier * Time.deltaTime * lightSpeed;
-        lightProgress = Mathf.Clamp(lightProgress, 0, 1);
-        if(humanChecking && lightProgress ==0) {
-            humanChecking = false;
+        while (lightProgress < 1)
+        {
+            lightProgress += Time.deltaTime * lightSpeed;
+            lightProgress = Mathf.Clamp(lightProgress, 0, 1);
+
+            hunterLight.intensity = Mathf.Lerp(lightStartIntensity, lightEndIntensity, lightProgress);
+            hunterLight.range = Mathf.Lerp(lightStartRange, lightEndRange, lightProgress);
+            hunterLight.spotAngle = Mathf.Lerp(lightStartAngle, lightEndAngle, lightProgress);
+            hunterLight.color = Color.Lerp(lightStartColor, lightEndColor, lightProgress);
+            yield return null;
         }
-        hunterLight.intensity = Mathf.Lerp(lightStartIntensity, lightEndIntensity, lightProgress);
-        hunterLight.range = Mathf.Lerp(lightStartRange, lightEndRange, lightProgress);
-        hunterLight.spotAngle = Mathf.Lerp(lightStartAngle, lightEndAngle, lightProgress);
-        hunterLight.color = Color.Lerp(lightStartColor, lightEndColor, lightProgress);
+        StartCoroutine(ResetLight());
+        CheckForHuman();
     }
 
     IEnumerator ResetLight()
@@ -168,5 +157,6 @@ public class PlayerTwoBehavior : MonoBehaviour
             hunterLight.color = Color.Lerp(lightStartColor, lightEndColor, lightProgress);
             yield return null;
         }
+        humanChecking = false;
     }
 }
