@@ -59,7 +59,6 @@ public class NPCManager: MonoBehaviour {
         if (infectedCount >= npcCount){
             Game.Instance.DancerWin();
         }
-        Debug.Log("Infected: " +infectedCount+"\nTotal: "+npcCount);
     }
 
     public float GetRandomDanceTime(){

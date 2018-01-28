@@ -121,7 +121,6 @@ public class PlayerTwoBehavior : MonoBehaviour
       if (Input.GetKey("joystick 2 button " + i))
       {
         expanded = true;
-        Debug.Log("Pressed: " + i);
         if (lightProgress >= 1f && (Time.time >= timeOfLastHumanCheck + intervalHumanCheck))
         {
           CheckForHuman();

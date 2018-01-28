@@ -65,7 +65,6 @@ public class Player: MonoBehaviour{
     public void Transmit(){
         var layermask = 1 << 8;
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, transmitRadius, layermask);
-        Debug.Log(hitColliders.Length);
         for (int i=0; i < hitColliders.Length; i++){
             var NPC = hitColliders[i].transform.parent.GetComponent<NPC>();
             if (NPC){
@@ -122,7 +121,7 @@ public class Player: MonoBehaviour{
             } else {
                 return;
             }
-            transform.Translate(direction.ToVector3());
+            transform.Translate(direction.ToVector3(), Space.World);
             transform.LookAt(transform.position + direction.ToVector3());
         }
     }
