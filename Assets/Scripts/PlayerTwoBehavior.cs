@@ -53,8 +53,8 @@ public class PlayerTwoBehavior : MonoBehaviour
     {
         Vector3 pos = transform.position;
 
-        float moveHorizontal = Input.GetAxis("Horizontal") * sensitivity;
-        float moveVertical = Input.GetAxis("Vertical") * sensitivity;
+        float moveHorizontal = Input.GetAxis("Hunter Horizontal Joystick") * sensitivity;
+        float moveVertical = Input.GetAxis("Hunter Vertical Joystick") * sensitivity;
 
         pos.x = Mathf.Clamp(transform.position.x + moveHorizontal, minX, maxX);
         pos.z = Mathf.Clamp(transform.position.z + moveVertical, minZ, maxZ);
@@ -107,8 +107,11 @@ public class PlayerTwoBehavior : MonoBehaviour
         transform.position = GetMovement();
         hunterLight.transform.LookAt(transform.position);
 
-      if (Input.GetKeyDown("joystick 2 button 16"))
-        {
+      bool expanded = false;
+      for (int i = 0; i < 20; i ++){
+        if (Input.GetKey("joystick 2 button "+i)){
+            expanded = true;
+            Debug.Log("Pressed: "+i);
             if (lightProgress >= 1f && (Time.time >= timeOfLastHumanCheck + intervalHumanCheck))
             {
                 CheckForHuman();
@@ -117,12 +120,12 @@ public class PlayerTwoBehavior : MonoBehaviour
             {
                 SetLightProgress(1);
             }
-        }
-        else
-        {
-            if (lightProgress > 0)
-                SetLightProgress(-1);
-        }
+          }
+      }
+      if (!expanded){
+        if (lightProgress > 0)
+            SetLightProgress(-1);
+      }
     }
 
     void SetLightProgress(int multiplier)
