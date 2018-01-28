@@ -12,7 +12,7 @@ public enum Controllers{
 
 }
 
-class Player: MonoBehaviour{
+public class Player: MonoBehaviour{
     
     public float transmitSuccessChance;
     public float transmitRadius;
@@ -21,10 +21,11 @@ class Player: MonoBehaviour{
     public float beatBuffer = 0.2f;
     public bool hitThisBeat = true;
     public Color color;
+    public Color[] colors = new Color[] { Color.red, Color.yellow, Color.green };
+    public bool checkingBeat = false;
 
     public void Start(){
         Music.Instance.beatDetector.OnBeat += OnBeatDetected;
-        SpawnPlayer();
     }
 
     public void OnBeatDetected(){
@@ -33,18 +34,31 @@ class Player: MonoBehaviour{
     }
 
     public void SpawnPlayer(){
-        // spawn player set color
+        this.transform.position = Game.Instance.map.GetRandSpawnPos();
+        this.color = GetRandColor();
+        RevealColor();
+    }
+    
+    public Color GetRandColor(){
+        var color = colors[Random.Range(0, colors.Length)];
+        return color;
+    }
+
+    public void RevealColor(){
+        this.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = color;
     }
 
     public void Update(){
         if (Input.GetKeyDown(KeyCode.Space)){
             HitBeat();
         }
-        if (Music.Instance.timeSinceLastBeat > (beatLength - beatBuffer)){
-            if (!hitThisBeat){
-                BeatFail();
+        if (checkingBeat){
+            if (Music.Instance.timeSinceLastBeat > (beatLength - beatBuffer)){
+                if (!hitThisBeat){
+                    BeatFail();
+                }
+                hitThisBeat = false;
             }
-            hitThisBeat = false;
         }
     }
     
@@ -96,8 +110,8 @@ class Player: MonoBehaviour{
     public void Move(){
         string hAxisName;
         string vAxisName;
-        hAxisName = "Dancer_Horizontal_Joystick";
-        vAxisName = "Dancer_Vertical_Joystick";
+        hAxisName = "Dancer Horizontal Joystick";
+        vAxisName = "Dancer Vertical Joystick";
         var horizontal = Input.GetAxis(hAxisName);
         var vertical = Input.GetAxis(vAxisName);
         Direction direction;
@@ -105,7 +119,6 @@ class Player: MonoBehaviour{
             if (controller == Controller.joystick){
                 direction = InputAxisToDirection(horizontal, vertical);
             } else {
-                Debug.Log("No controller type");
                 return;
             }
             transform.Translate(direction.ToVector3());

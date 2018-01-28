@@ -33,13 +33,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1585954324053588}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.008971708, y: 0.0054395073, z: -0.0064918697, w: 0.9999239}
+  m_LocalPosition: {x: 0, y: 0, z: 9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 1.0320001, y: 0.61700004, z: -0.73800004}
 --- !u!114 &114977014129345384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -51,10 +51,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e755519ca28a4510bb70778400823b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  npcCount: 5
+  npcCount: 20
+  infectedCount: 0
   npc: {fileID: 1284330090228086, guid: 4cb612f1779cf4c31818112a78710ae8, type: 2}
   spawnPlayer: 1
-  player: {fileID: 1644037998831600, guid: d3204ac5111904d78a675242b04bcf02, type: 2}
+  player: {fileID: 0}
   NPCMoveChance: 0.5
   NPCs: []
-  spawnPosition: {x: 0, y: 0, z: 0}
+  colors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}

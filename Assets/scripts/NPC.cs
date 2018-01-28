@@ -37,9 +37,13 @@ public class NPC: MonoBehaviour
 
     public void SetColor(Color color){
         this.color = color;
+        if (color == Game.Instance.player.color){
+            infected = true;
+            manager.NotifyInfected();
+        }
     }
 
-    public void RevealColor(Color color){
+    public void RevealColor(){
         transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = color;
     }
 

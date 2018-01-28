@@ -64,26 +64,31 @@ public class Game : MonoBehaviour
 
   public GameObject GameOverUI;
 
+  public Player player;
+  public NPCManager npcManager;
+
+  void Start(){
+    StartLevel();
+  }
+  
+  public void StartLevel() {
+    player = Instantiate(player, Vector3.zero, Quaternion.identity).GetComponent<Player>();
+    player.SpawnPlayer();
+    npcManager = Instantiate(npcManager, Vector3.zero, Quaternion.identity).GetComponent<NPCManager>();
+    npcManager.SpawnNPCs();
+  }
+
   public void DancerWin()
   {
-    Debug.Log("Dancer Wins");
+    Debug.Log("Dancer win!");
+    GameOver(1);
   }
 
-  public void HunterWin()
-  {
-    Debug.Log("Hunter Wins");
+  public void HunterWin(){
+    Debug.Log("Hunter win!");
+    GameOver(0);
   }
-
-  public void AddDancerLocation()
-  {
-    dancerLocations++;
-
-    if (dancerLocations >= maxDancerLocations)
-    {
-      GameOver(1);
-    }
-  }
-
+  
   public void AddHunterFailure()
   {
     hunterFailures++;
@@ -97,17 +102,19 @@ public class Game : MonoBehaviour
   public void GameOver(int winner)
   {
     string winnerName = winner == 0 ? "Dancer" : "Hunter";
-    Font font = winner == 0 ? dancerFont : hunterFont;
-    var color = winner == 0 ? new Color(0.0f / 255.0f, 78.0f / 255.0f, 206.0f / 255.0f) : new Color(236.0f / 255f, 7.0f / 255f, 7.0f / 255f);
+    Debug.Log(winnerName);
+    // Font font = winner == 0 ? dancerFont : hunterFont;
+    // var color = winner == 0 ? new Color(0.0f / 255.0f, 78.0f / 255.0f, 206.0f / 255.0f) : new Color(236.0f / 255f, 7.0f / 255f, 7.0f / 255f);
 
-    winnerText.font = font;
-    winnerText.color = color;
-    playAgainText.font = font;
-    winnerText.text = "The " + winnerName + " Won!";
-    playAgainText.text = "Press Square to Play Again.";
-    StartCoroutine(FadeTo(0.0f, 1f));
-    gameOver = true;
+    // winnerText.font = font;
+    // winnerText.color = color;
+    // playAgainText.font = font;
+    // winnerText.text = "The " + winnerName + " Won!";
+    // playAgainText.text = "Press Square to Play Again.";
+    // StartCoroutine(FadeTo(0.0f, 1f));
+    // gameOver = true;
   }
+
 
   IEnumerator FadeTo(float aValue, float aTime)
   {
@@ -117,6 +124,7 @@ public class Game : MonoBehaviour
       yield return null;
     }
   }
+    
   void Awake()
   {
     if (Instance != null)
@@ -127,12 +135,6 @@ public class Game : MonoBehaviour
     Instance = this;
 
     canvasGroup = canvas.GetComponent<CanvasGroup>();
-  }
-
-  // Use this for initialization
-  void Start()
-  {
-
   }
 
   // Update is called once per frame

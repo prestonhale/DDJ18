@@ -26,8 +26,8 @@ public class PlayerTwoBehavior : MonoBehaviour
   {
     Vector3 pos = transform.position;
 
-    float moveHorizontal = Input.GetAxis("Horizontal") * sensitivity;
-    float moveVertical = Input.GetAxis("Vertical") * sensitivity;
+    float moveHorizontal = Input.GetAxis("Hunter Horizontal Joystick") * sensitivity;
+    float moveVertical = Input.GetAxis("Hunter Vertical Joystick") * sensitivity;
 
     pos.x = Mathf.Clamp(transform.position.x + moveHorizontal, minX, maxX);
     pos.z = Mathf.Clamp(transform.position.z + moveVertical, minZ, maxZ);
@@ -39,8 +39,7 @@ public class PlayerTwoBehavior : MonoBehaviour
   {
     if (touchingPlayer)
     {
-      Debug.Log("YOU WIN!");
-      // Game.Instance.GameOver(1);
+      Game.Instance.HunterWin();
     }
     else if (touchingComputer)
     {
@@ -76,11 +75,11 @@ public class PlayerTwoBehavior : MonoBehaviour
   }
 
   // Update is called once per frame
-  void FixedUpdate()
+  void Update()
   {
     transform.position = GetMovement();
 
-    if (Input.GetKeyDown("joystick 1 button 1"))
+    if (Input.GetKeyDown("joystick 2 button 16"))
     {
       CheckForHuman();
     }
