@@ -11,6 +11,7 @@ public class NPCManager: MonoBehaviour {
     public float NPCMoveChance = 0.5f;
     public List<NPC> NPCs = new List<NPC>();
     public Vector3 spawnPosition;
+    public Color[] colors = new Color[] { Color.red, Color.yellow, Color.green };
 
     public void Start(){
         spawnPosition = transform.position;
@@ -27,9 +28,14 @@ public class NPCManager: MonoBehaviour {
     public NPC SpawnNPC(){
         var newSpawnPosition = GetRandSpawnPos();
         var newNpc = Instantiate(npc, newSpawnPosition, Quaternion.identity).GetComponent<NPC>();
-        Debug.Log(newSpawnPosition);
         newNpc.manager = this;
+        newNpc.SetColor(GetRandColor());
         return newNpc;
+    }
+    
+    public Color GetRandColor(){
+        var color = colors[Random.Range(0, colors.Length)];
+        return color;
     }
 
     public void OnBeatDetected(){

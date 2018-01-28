@@ -14,9 +14,9 @@ public class NPC: MonoBehaviour
     public float nextDanceTime;
     public NPCManager manager;
 
-    public Material material;
+    public Color color;
 
-    public static Color[] colors = new Color[] { Color.red, Color.green, Color.yellow };
+    public Material material;
 
     // If we recalc their next dance time every dance, they appear drunk
     // If we don't recalc, they're consistent but still terrible
@@ -25,7 +25,6 @@ public class NPC: MonoBehaviour
     void Start()
     {   
         material = transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material;
-        material.color = GetRandColor();
     }
 
     void Update(){
@@ -36,14 +35,14 @@ public class NPC: MonoBehaviour
         }
     }
 
-    void SetRandColor(){
-        transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = GetRandColor();
+    public void SetColor(Color color){
+        this.color = color;
     }
 
-    public Color GetRandColor(){
-        var color = colors[Random.Range(0, colors.Length)];
-        return color;
+    public void RevealColor(Color color){
+        transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material.color = color;
     }
+
 
     public void Dance(){
         dancedThisBeat = true;
@@ -73,9 +72,9 @@ public class NPC: MonoBehaviour
         return randomDirection;
     }
 
-    public void WasTransmittedTo(){
+    public void WasTransmittedTo(Color color){
         if (!infected){
-            material.color = Color.cyan;
+            material.color = color;
             manager.NotifyInfected();
             infected = true;
         }

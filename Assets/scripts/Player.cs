@@ -17,14 +17,35 @@ class Player: MonoBehaviour{
     public float transmitSuccessChance;
     public float transmitRadius;
     public Controller controller;
+    public float beatLength = 0.75f;
+    public float beatBuffer = 0.2f;
+    public bool hitThisBeat = true;
+    public Color color;
 
     public void Start(){
         Music.Instance.beatDetector.OnBeat += OnBeatDetected;
+        SpawnPlayer();
     }
 
     public void OnBeatDetected(){
         Move();
         Transmit();
+    }
+
+    public void SpawnPlayer(){
+        // spawn player set color
+    }
+
+    public void Update(){
+        if (Input.GetKeyDown(KeyCode.Space)){
+            HitBeat();
+        }
+        if (Music.Instance.timeSinceLastBeat > (beatLength - beatBuffer)){
+            if (!hitThisBeat){
+                BeatFail();
+            }
+            hitThisBeat = false;
+        }
     }
     
     public void Transmit(){
@@ -34,10 +55,42 @@ class Player: MonoBehaviour{
             var NPC = hitColliders[i].transform.parent.GetComponent<NPC>();
             if (NPC){
                 if (Random.value <= transmitSuccessChance){
-                    NPC.WasTransmittedTo();
+                    NPC.WasTransmittedTo(this.color);
                 }
             }
         }
+    }
+
+    public void HitBeat(){
+        bool valid = false;
+        if(Music.Instance.timeSinceLastBeat <= beatBuffer){
+            valid=true;
+        }
+        if(Music.Instance.timeSinceLastBeat > (beatLength - beatBuffer)){
+            valid=true;
+        }
+        if (valid){
+            BeatSuccess();
+        }
+        else {
+            BeatFail();
+        }
+    }
+
+    public void BeatSuccess(){
+        this.GetComponent<MeshRenderer>().material.color = Color.green;
+        hitThisBeat = true;
+        StartCoroutine(ReturnToColor());
+    }
+
+    public void BeatFail(){
+        this.GetComponent<MeshRenderer>().material.color = Color.red;
+        StartCoroutine(ReturnToColor());
+    }
+
+    IEnumerator ReturnToColor(){
+        yield return new WaitForSeconds(0.1f);
+        this.GetComponent<MeshRenderer>().material.color = Color.white;
     }
 
     public void Move(){
