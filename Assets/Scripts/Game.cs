@@ -50,7 +50,7 @@ public class Game : MonoBehaviour
 {
 
   public int hunterFailures = 0;
-  public int maxHunterFailures = 3;
+  public int maxHunterFailures = 2;
 
   public static Game Instance;
 
@@ -96,7 +96,7 @@ public class Game : MonoBehaviour
   public void StartLevel(){
     gameState = GameState.Started;
     Music.Instance.Play();
-    hunterFailureNumber.text = "X X X";
+    hunterFailureNumber.text = "X X";
   }
 
   public void DancerWin()

@@ -135,6 +135,10 @@ public class Player: MonoBehaviour{
             } else {
                 return;
             }
+            Vector3 newPos = transform.position + direction.ToVector3();
+            if (!Game.Instance.map.InBounds(newPos)){
+                return;
+            }
             transform.Translate(direction.ToVector3(), Space.World);
             transform.LookAt(transform.position + direction.ToVector3());
         }

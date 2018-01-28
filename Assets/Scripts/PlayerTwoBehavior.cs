@@ -119,7 +119,10 @@ public class PlayerTwoBehavior : MonoBehaviour
 
         for (int i = 0; i < 20; i++)
         {
-            if (!humanChecking && Input.GetKeyDown("joystick 1 button " + i))
+            if(Input.GetKeyDown("joystick 2 button "+i)){
+                Debug.Log("Key " + i);
+            }
+            if (!humanChecking && Input.GetKeyDown("joystick 2 button " + i))
             {
                 humanChecking = true;
                 StartCoroutine(LightProgress());
