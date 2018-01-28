@@ -53,8 +53,13 @@ public class Game : MonoBehaviour
   private CanvasGroup canvasGroup;
   private bool gameOver = false;
 
-  public UnityEngine.UI.Text text;
+  public UnityEngine.UI.Text winnerText;
+  public UnityEngine.UI.Text playAgainText;
 
+  public Font dancerFont;
+  public Font hunterFont;
+
+  public GameObject GameOverUI;
   public void AddDancerLocation()
   {
     dancerLocations++;
@@ -78,10 +83,23 @@ public class Game : MonoBehaviour
   public void GameOver(int winner)
   {
     string winnerName = winner == 0 ? "Dancer" : "Hunter";
+    Font font = winner == 0 ? dancerFont : hunterFont;
 
-    canvasGroup.alpha = 1;
-    text.text = "The " + winnerName + " Won!";
+    winnerText.font = font;
+    playAgainText.font = font;
+    winnerText.text = "The " + winnerName + " Won!";
+    playAgainText.text = "Press Square to Play Again.";
+    StartCoroutine(FadeTo(0.0f, 1f));
     gameOver = true;
+  }
+
+  IEnumerator FadeTo(float aValue, float aTime)
+  {
+    for (float t = 0.0f; t < 1.0f; t += Time.deltaTime / aTime)
+    {
+      GameOverUI.GetComponent<CanvasGroup>().alpha = 0.75f * t;
+      yield return null;
+    }
   }
   void Awake()
   {
